@@ -1,0 +1,564 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="2220" height="1760" viewBox="0 0 2220 1760">
+<defs>
+  <marker id="tri" viewBox="0 0 12 12" refX="12" refY="6" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="#fff" stroke="#333" stroke-width="1.2"/></marker>
+  <marker id="open" viewBox="0 0 12 12" refX="12" refY="6" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,1 L12,6 L0,11" fill="none" stroke="#333" stroke-width="1.3"/></marker>
+  <marker id="dfill" viewBox="0 0 16 10" refX="16" refY="5" markerWidth="18" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,5 L8,0 L16,5 L8,10 z" fill="#333" stroke="#333"/></marker>
+  <marker id="dhollow" viewBox="0 0 16 10" refX="16" refY="5" markerWidth="18" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,5 L8,0 L16,5 L8,10 z" fill="#fff" stroke="#333"/></marker>
+</defs>
+<rect width="2220" height="1760" fill="#ffffff"/>
+<text x="16" y="28" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="bold" fill="#222">Restaurant Rush - Stage 3 class diagram (final design: Host, ComboMeal, Happy Hour)</text>
+<text x="16" y="48" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#555">Red outline = new in Stage 3. This diagram matches the final submitted code.</text>
+<rect x="26" y="200" width="370" height="359" rx="6" fill="#eef7ee" stroke="#7aa97a" stroke-width="1.2"/>
+<rect x="26" y="200" width="192.5" height="20" rx="4" fill="#d6ecd6" stroke="#7aa97a"/>
+<text x="36" y="214" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">restaurantrush.boundary</text>
+<rect x="456" y="70" width="1420" height="743" rx="6" fill="#eef3fb" stroke="#7d97c4" stroke-width="1.2"/>
+<rect x="456" y="70" width="185" height="20" rx="4" fill="#d8e3f5" stroke="#7d97c4"/>
+<text x="466" y="84" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">restaurantrush.control</text>
+<rect x="26" y="870" width="2005" height="870" rx="6" fill="#fdf8ea" stroke="#c9ad62" stroke-width="1.2"/>
+<rect x="26" y="870" width="177.5" height="20" rx="4" fill="#f5e9c4" stroke="#c9ad62"/>
+<text x="36" y="884" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">restaurantrush.entity</text>
+<path d="M237.0,105.5 L353.5,105.5 L353.5,106.4 L470.0,106.4" fill="none" stroke="#333" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#open)"/>
+<rect x="325.7" y="96.97" width="55.6" height="13" fill="#fff" opacity="0.9"/>
+<text x="353.5" y="106.97" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">«create»</text>
+<path d="M470.0,188.6 L410.0,188.6 L410.0,250.8 L330.0,250.8" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#open)"/>
+<text x="335" y="245.79" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">1</text>
+<path d="M470.0,236.8 L425.0,236.8 L425.0,470.4 L382.0,470.4" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#open)"/>
+<text x="387" y="465.45" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">1</text>
+<path d="M555.5,261.0 L555.5,270.5 L544.3,270.5 L544.3,280.0" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#open)"/>
+<text x="549.29" y="275" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">1</text>
+<path d="M330.0,337.7 L400.0,337.7 L400.0,339.6 L470.0,339.6" fill="none" stroke="#333" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#open)"/>
+<rect x="372.2" y="329.65" width="55.6" height="13" fill="#fff" opacity="0.9"/>
+<text x="400" y="339.65" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">displays</text>
+<path d="M793.0,292.9 L846.5,292.9 L846.5,159.5 L900.0,159.5" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#open)"/>
+<text x="895" y="154.5" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="end" fill="#333">1</text>
+<path d="M793.0,344.8 L846.5,344.8 L846.5,333.6 L900.0,333.6" fill="none" stroke="#333" stroke-width="1.2" marker-start="url(#dfill)"/>
+<text x="895" y="328.55" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="end" fill="#333">1</text>
+<path d="M793.0,513.1 L846.5,513.1 L846.5,493.1 L900.0,493.1" fill="none" stroke="#333" stroke-width="1.2" marker-start="url(#dfill)"/>
+<text x="895" y="488.13" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="end" fill="#333">1</text>
+<path d="M760.7,539.0 L763.0,557.0 L1680.0,557.0 L1677.4,441.0" fill="none" stroke="#333" stroke-width="1.2" marker-start="url(#dfill)"/>
+<text x="1682.38" y="454" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">1</text>
+<path d="M1176.0,315.7 L1300.0,315.9" fill="none" stroke="#333" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#open)"/>
+<rect x="1213.3" y="306.81" width="49.4" height="13" fill="#fff" opacity="0.9"/>
+<text x="1238" y="316.81" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">returns</text>
+<path d="M1176.0,375.2 L1500.0,375.0" fill="none" stroke="#333" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#open)"/>
+<rect x="1307.1" y="366.095" width="61.800000000000004" height="13" fill="#fff" opacity="0.9"/>
+<text x="1338" y="376.095" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">evaluates</text>
+<path d="M599.2,539.0 L599.2,719.5 L593.2,719.5 L593.2,900.0" fill="none" stroke="#333" stroke-width="1.2" marker-start="url(#dfill)"/>
+<text x="598.2" y="895" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">1</text>
+<path d="M470.0,500.1 L438.0,500.0 L438.0,845.0 L194.0,845.0 L193.0,900.0" fill="none" stroke="#333" stroke-width="1.2" marker-start="url(#dfill)"/>
+<text x="198" y="895" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">4</text>
+<rect x="213.3" y="836" width="173.4" height="13" fill="#fff" opacity="0.9"/>
+<text x="300" y="846" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">waiter, chef, cashier, host</text>
+<path d="M1200.0,219.0 L1200.0,830.0 L1070.0,830.0 L1070.8,900.0" fill="none" stroke="#333" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#open)"/>
+<rect x="1172.2" y="806" width="55.6" height="13" fill="#fff" opacity="0.9"/>
+<text x="1200" y="816" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">«create»</text>
+<path d="M80.0,1074.5 L60.0,1073.0 L60.4,1019.0" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#tri)"/>
+<path d="M80.0,1245.5 L60.0,1245.0 L60.4,1019.0" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#tri)"/>
+<path d="M80.0,1332.5 L60.0,1332.0 L60.4,1019.0" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#tri)"/>
+<path d="M244.0,1001.1 L455.0,1002.0 L455.0,1515.0 L363.0,1515.5" fill="none" stroke="#333" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#open)"/>
+<rect x="427.2" y="1441" width="55.6" height="13" fill="#fff" opacity="0.9"/>
+<text x="455" y="1451" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">«throws»</text>
+<path d="M635.6,1117.0 L635.6,1143.5 L705.0,1143.5 L705.0,1170.0" fill="none" stroke="#333" stroke-width="1.2" marker-start="url(#dfill)"/>
+<text x="710.05" y="1165" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">1..*</text>
+<rect x="648.7499999999999" y="1134.5" width="43.2" height="13" fill="#fff" opacity="0.9"/>
+<text x="670.3499999999999" y="1144.5" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">tables</text>
+<path d="M508.3,1117.0 L508.2,1340.0" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#open)"/>
+<text x="513.21" y="1335" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">1</text>
+<rect x="492.855" y="1219.5" width="30.8" height="13" fill="#fff" opacity="0.9"/>
+<text x="508.255" y="1229.5" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">menu</text>
+<path d="M763.0,921.7 L806.5,921.7 L806.5,917.1 L850.0,917.1" fill="none" stroke="#333" stroke-width="1.2" marker-start="url(#dhollow)" marker-end="url(#open)"/>
+<text x="815" y="915" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#333">0..*</text>
+<rect x="779.1" y="941" width="61.800000000000004" height="13" fill="#fff" opacity="0.9"/>
+<text x="810" y="951" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">customers</text>
+<path d="M734.7,900.0 L734.7,875.0 L1267.5,875.0 L1267.5,900.0" fill="none" stroke="#333" stroke-width="1.2" marker-start="url(#dhollow)" marker-end="url(#open)"/>
+<text x="1272.5" y="895" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">0..*</text>
+<rect x="938.4" y="866" width="43.2" height="13" fill="#fff" opacity="0.9"/>
+<text x="960" y="876" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">orders</text>
+<path d="M791.0,1206.4 L820.5,1206.4 L820.5,1208.7 L850.0,1208.7" fill="none" stroke="#333" stroke-width="1.2"/>
+<text x="797" y="1200" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#333">0..1</text>
+<text x="818" y="1222" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#333">0..1</text>
+<rect x="782.2" y="1241" width="55.6" height="13" fill="#fff" opacity="0.9"/>
+<text x="810" y="1251" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">occupant</text>
+<path d="M1126.0,941.2 L1168.0,941.2 L1168.0,951.0 L1210.0,951.0" fill="none" stroke="#333" stroke-width="1.2"/>
+<text x="1131" y="936.16" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">1</text>
+<text x="1205" y="946.03" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="end" fill="#333">0..1</text>
+<rect x="1161.5" y="951" width="37" height="13" fill="#fff" opacity="0.9"/>
+<text x="1180" y="961" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">order</text>
+<path d="M988.0,1243.0 L988.0,1291.5 L985.0,1291.5 L985.0,1340.0" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#open)"/>
+<text x="990" y="1335" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">1</text>
+<path d="M1210.0,1168.5 L1180.0,1168.5 L1180.0,1225.8 L1126.0,1225.8" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#tri)"/>
+<path d="M1440.0,956.7 L1520.0,957.0" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#open)"/>
+<text x="1515" y="952" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="end" fill="#333">1</text>
+<path d="M1440.0,1070.1 L1480.0,1070.1 L1480.0,1078.2 L1520.0,1078.2" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#open)"/>
+<text x="1515" y="1073.2" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="end" fill="#333">1</text>
+<rect x="1464.6" y="1065.15" width="30.8" height="13" fill="#fff" opacity="0.9"/>
+<text x="1480" y="1075.15" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">item</text>
+<path d="M588.5,1445.0 L587.0,1680.0 L1550.0,1680.0 L1550.2,1151.0" fill="none" stroke="#333" stroke-width="1.2" marker-start="url(#dhollow)" marker-end="url(#open)"/>
+<text x="1555.2" y="1164" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">1..*</text>
+<rect x="1050" y="1671" width="37" height="13" fill="#fff" opacity="0.9"/>
+<text x="1068.5" y="1681" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">items</text>
+<path d="M1780.0,1105.5 L1671.0,1105.5" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#tri)"/>
+<path d="M1210.0,1287.5 L1180.0,1287.5 L1180.0,1225.8 L1126.0,1225.8" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#tri)"/>
+<path d="M1210.0,1443.5 L1180.0,1443.5 L1180.0,1225.8 L1126.0,1225.8" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#tri)"/>
+<path d="M80.0,1415.5 L60.0,1415.0 L60.4,1019.0" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#tri)"/>
+<path d="M1780.0,1229.9 L1720.0,1229.9 L1720.0,1105.5 L1671.0,1105.5" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#tri)"/>
+<path d="M1833.1,1323.0 L1856.0,1350.0 L1610.0,1350.0 L1610.6,1151.0" fill="none" stroke="#333" stroke-width="1.2" marker-start="url(#dhollow)" marker-end="url(#open)"/>
+<text x="1615.6" y="1164" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">2</text>
+<rect x="1696.7" y="1341" width="86.60000000000001" height="13" fill="#fff" opacity="0.9"/>
+<text x="1740" y="1351" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">first, second</text>
+<path d="M1003.6,517.0 L1003.6,553.5 L1002.0,553.5 L1002.0,590.0" fill="none" stroke="#333" stroke-width="1.2" marker-start="url(#dhollow)" marker-end="url(#open)"/>
+<text x="1007" y="585" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">0..*</text>
+<rect x="971.9" y="544.5" width="61.800000000000004" height="13" fill="#fff" opacity="0.9"/>
+<text x="1002.8" y="554.5" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">modifiers</text>
+<path d="M1250.0,610.6 L1177.0,610.6 L1177.0,623.0 L1104.0,623.0" fill="none" stroke="#333" stroke-width="1.2" stroke-dasharray="6,4" marker-end="url(#tri)"/>
+<path d="M712.3,539.0 L714.0,795.0 L1400.0,795.0 L1401.5,773.0" fill="none" stroke="#333" stroke-width="1.2" marker-start="url(#dfill)"/>
+<text x="1406.5" y="786" font-family="Consolas, 'Courier New', monospace" font-size="11" text-anchor="start" fill="#333">1</text>
+<rect x="969.1" y="786" width="61.800000000000004" height="13" fill="#fff" opacity="0.9"/>
+<text x="1000" y="796" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">happyHour</text>
+<path d="M1553.0,742.5 L1640.0,742.0 L1640.0,860.0 L1160.0,860.0 L1160.0,909.0 L1112.2,900.0" fill="none" stroke="#333" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#open)"/>
+<rect x="1602.9" y="791" width="74.2" height="13" fill="#fff" opacity="0.9"/>
+<text x="1640" y="801" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-style="italic" text-anchor="middle" fill="#444">recover(15)</text>
+<rect x="40" y="80" width="197" height="51" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="40" y="80" width="197" height="23" fill="#e6e6e6" stroke="#333" stroke-width="1.2"/>
+<text x="138.5" y="96" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Main</text>
+<line x1="40" y1="103" x2="237" y2="103" stroke="#333"/>
+<line x1="40" y1="111" x2="237" y2="111" stroke="#333"/>
+<text x="46" y="124" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ main(args: String[]): void</text>
+<rect x="40" y="230" width="290" height="189" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="40" y="230" width="290" height="23" fill="#d6ecd6" stroke="#333" stroke-width="1.2"/>
+<text x="185" y="246" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">ConsoleView</text>
+<line x1="40" y1="253" x2="330" y2="253" stroke="#333"/>
+<text x="46" y="266" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- out: PrintStream</text>
+<line x1="40" y1="273" x2="330" y2="273" stroke="#333"/>
+<text x="46" y="286" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ showWelcome(game: Game): void</text>
+<text x="46" y="300" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ showTurnHeader(game: Game): void</text>
+<text x="46" y="314" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ showState(game: Game): void</text>
+<text x="46" y="328" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ showEvents(events: List&lt;String&gt;): void</text>
+<text x="46" y="342" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ showError(message: String): void</text>
+<text x="46" y="356" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ showEndOfTurn(game: Game): void</text>
+<text x="46" y="370" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ showFinalResult(game: Game): void</text>
+<text x="46" y="384" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111"># waiterTasks(r: Restaurant): List&lt;String&gt;</text>
+<text x="46" y="398" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111"># describeCustomer(c: Customer): String</text>
+<text x="46" y="412" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111"># describeHappyHour(h: HappyHour): String</text>
+<rect x="40" y="440" width="342" height="105" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="40" y="440" width="342" height="23" fill="#d6ecd6" stroke="#333" stroke-width="1.2"/>
+<text x="211" y="456" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">ConsoleInput</text>
+<line x1="40" y1="463" x2="382" y2="463" stroke="#333"/>
+<text x="46" y="476" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- reader: BufferedReader</text>
+<text x="46" y="490" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- echo: boolean</text>
+<text x="46" y="504" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- ended: boolean</text>
+<line x1="40" y1="511" x2="382" y2="511" stroke="#333"/>
+<text x="46" y="524" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ readInt(prompt: String, min: int, max: int): int</text>
+<text x="46" y="538" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ readYesNo(prompt: String): boolean</text>
+<rect x="470" y="100" width="171" height="161" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="470" y="100" width="171" height="23" fill="#d8e3f5" stroke="#333" stroke-width="1.2"/>
+<text x="555.5" y="116" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">GameController</text>
+<line x1="470" y1="123" x2="641" y2="123" stroke="#333"/>
+<text x="476" y="136" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- game: Game</text>
+<text x="476" y="150" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- view: ConsoleView</text>
+<text x="476" y="164" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- input: ConsoleInput</text>
+<line x1="470" y1="171" x2="641" y2="171" stroke="#333"/>
+<text x="476" y="184" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ run(): void</text>
+<text x="476" y="198" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- playTurn(): void</text>
+<text x="476" y="212" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- waiterStep(): void</text>
+<text x="476" y="226" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- chefStep(): void</text>
+<text x="476" y="240" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- offerHappyHour(): void</text>
+<text x="476" y="254" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- hostStep(): void</text>
+<rect x="470" y="280" width="323" height="259" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="470" y="280" width="323" height="23" fill="#d8e3f5" stroke="#333" stroke-width="1.2"/>
+<text x="631.5" y="296" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Game</text>
+<line x1="470" y1="303" x2="793" y2="303" stroke="#333"/>
+<text x="476" y="316" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- currentTurn: int</text>
+<text x="476" y="330" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- nextCustomerId: int</text>
+<text x="476" y="344" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- events: List&lt;String&gt;</text>
+<line x1="470" y1="351" x2="793" y2="351" stroke="#333"/>
+<text x="476" y="364" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ hasNextTurn(): boolean</text>
+<text x="476" y="378" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ startTurn(): void</text>
+<text x="476" y="392" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ activateHappyHour(): void</text>
+<text x="476" y="406" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ hostSeat(customerId: int, table: int): void</text>
+<text x="476" y="420" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ waiterSeat(customerId: int, table: int): void</text>
+<text x="476" y="434" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ waiterTakeOrder(table: int): void</text>
+<text x="476" y="448" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ waiterServe(orderId: int): void</text>
+<text x="476" y="462" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ chefPrepare(orderId: int): void</text>
+<text x="476" y="476" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ processEatingAndPayment(): void</text>
+<text x="476" y="490" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ processSatisfactionAndDepartures(): void</text>
+<text x="476" y="504" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ drainEvents(): List&lt;String&gt;</text>
+<text x="476" y="518" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getResult(): GameResult</text>
+<text x="476" y="532" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getHappyHour(): HappyHour</text>
+<rect x="900" y="100" width="375" height="119" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="900" y="100" width="375" height="23" fill="#d8e3f5" stroke="#333" stroke-width="1.2"/>
+<text x="1087.5" y="116" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Scenario</text>
+<line x1="900" y1="123" x2="1275" y2="123" stroke="#333"/>
+<text x="906" y="136" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ DEFAULT_SEED: long = 2003</text>
+<text x="906" y="150" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- seed: long</text>
+<line x1="900" y1="157" x2="1275" y2="157" stroke="#333"/>
+<text x="906" y="170" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ createMenu(): Menu</text>
+<text x="906" y="184" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ createArrival(turn: int, id: int): Optional&lt;Customer&gt;</text>
+<text x="906" y="198" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getMaxTurns(): int</text>
+<text x="906" y="212" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getTableCount(): int</text>
+<rect x="900" y="280" width="276" height="119" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="900" y="280" width="276" height="23" fill="#d8e3f5" stroke="#333" stroke-width="1.2"/>
+<text x="1038" y="296" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Objective</text>
+<line x1="900" y1="303" x2="1176" y2="303" stroke="#333"/>
+<text x="906" y="316" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- minPaidCustomers: int</text>
+<text x="906" y="330" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- minRevenue: Money</text>
+<text x="906" y="344" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- minAverageSatisfaction: int</text>
+<line x1="900" y1="351" x2="1176" y2="351" stroke="#333"/>
+<text x="906" y="364" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ base(): Objective</text>
+<text x="906" y="378" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ evaluate(stats: GameStats): GameResult</text>
+<text x="906" y="392" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ isPaidTargetMet(s: GameStats): boolean</text>
+<rect x="900" y="440" width="296" height="77" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="900" y="440" width="296" height="23" fill="#d8e3f5" stroke="#333" stroke-width="1.2"/>
+<text x="1048" y="456" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">PriceCalculator</text>
+<line x1="900" y1="463" x2="1196" y2="463" stroke="#333"/>
+<text x="906" y="476" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- modifiers: List&lt;PriceModifier&gt;</text>
+<line x1="900" y1="483" x2="1196" y2="483" stroke="#333"/>
+<text x="906" y="496" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ addModifier(m: PriceModifier): void</text>
+<text x="906" y="510" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ quote(c: Customer, item: MenuItem): Money</text>
+<rect x="1300" y="290" width="106" height="72" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="1300" y="290" width="106" height="38" fill="#d8e3f5" stroke="#333" stroke-width="1.2"/>
+<text x="1353" y="306" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle" fill="#111">«enumeration»</text>
+<text x="1353" y="321" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">GameResult</text>
+<line x1="1300" y1="328" x2="1406" y2="328" stroke="#333"/>
+<text x="1306" y="341" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">VICTORY</text>
+<text x="1306" y="355" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">DEFEAT</text>
+<rect x="1500" y="280" width="362" height="161" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="1500" y="280" width="362" height="23" fill="#d8e3f5" stroke="#333" stroke-width="1.2"/>
+<text x="1681" y="296" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">GameStats</text>
+<line x1="1500" y1="303" x2="1862" y2="303" stroke="#333"/>
+<text x="1506" y="316" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- revenue: Money</text>
+<text x="1506" y="330" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- paidCount: int</text>
+<text x="1506" y="344" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- paidSatisfactionTotal: int</text>
+<text x="1506" y="358" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- servedCount: int</text>
+<text x="1506" y="372" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- unhappyDepartures: int</text>
+<line x1="1500" y1="379" x2="1862" y2="379" stroke="#333"/>
+<text x="1506" y="392" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ recordServed(): void</text>
+<text x="1506" y="406" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ recordPayment(bill: Money, satisfaction: int): void</text>
+<text x="1506" y="420" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ recordDeparture(): void</text>
+<text x="1506" y="434" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getAverageSatisfaction(): OptionalDouble</text>
+<rect x="40" y="900" width="204" height="119" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="40" y="900" width="204" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="142" y="916" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" font-style="italic" fill="#111">Staff</text>
+<line x1="40" y1="923" x2="244" y2="923" stroke="#333"/>
+<text x="46" y="936" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- role: String</text>
+<text x="46" y="950" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- actedThisTurn: boolean</text>
+<line x1="40" y1="957" x2="244" y2="957" stroke="#333"/>
+<text x="46" y="970" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ resetForTurn(): void</text>
+<text x="46" y="984" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ hasActedThisTurn(): boolean</text>
+<text x="46" y="998" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111"># ensureAvailable(): void</text>
+<text x="46" y="1012" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111"># completeTask(): void</text>
+<rect x="80" y="1060" width="342" height="121" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="80" y="1060" width="342" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="251" y="1076" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Waiter</text>
+<line x1="80" y1="1083" x2="422" y2="1083" stroke="#333"/>
+<line x1="80" y1="1091" x2="422" y2="1091" stroke="#333"/>
+<text x="86" y="1104" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ seat(r: Restaurant, c: Customer, t: Table): void</text>
+<text x="86" y="1118" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ checkCanTakeOrder(c: Customer): void</text>
+<text x="86" y="1132" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ takeOrder(r: Restaurant, c: Customer,</text>
+<text x="86" y="1146" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">     item: MenuItem, price: Money,</text>
+<text x="86" y="1160" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">     turn: int): Order</text>
+<text x="86" y="1174" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ serve(o: Order, turn: int): void</text>
+<rect x="80" y="1220" width="250" height="51" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="80" y="1220" width="250" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="205" y="1236" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Chef</text>
+<line x1="80" y1="1243" x2="330" y2="1243" stroke="#333"/>
+<line x1="80" y1="1251" x2="330" y2="1251" stroke="#333"/>
+<text x="86" y="1264" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ prepare(o: Order, turn: int): void</text>
+<rect x="80" y="1300" width="296" height="65" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="80" y="1300" width="296" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="228" y="1316" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Cashier</text>
+<line x1="80" y1="1323" x2="376" y2="1323" stroke="#333"/>
+<line x1="80" y1="1331" x2="376" y2="1331" stroke="#333"/>
+<text x="86" y="1344" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ processPayment(r: Restaurant, turn: int):</text>
+<text x="86" y="1358" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">     Optional&lt;Customer&gt;</text>
+<rect x="80" y="1490" width="283" height="51" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="80" y="1490" width="283" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="221.5" y="1506" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">InvalidActionException</text>
+<line x1="80" y1="1513" x2="363" y2="1513" stroke="#333"/>
+<line x1="80" y1="1521" x2="363" y2="1521" stroke="#333"/>
+<text x="86" y="1534" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ InvalidActionException(message: String)</text>
+<rect x="480" y="900" width="283" height="217" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="480" y="900" width="283" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="621.5" y="916" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Restaurant</text>
+<line x1="480" y1="923" x2="763" y2="923" stroke="#333"/>
+<text x="486" y="936" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- waitingQueue: Deque&lt;Customer&gt;</text>
+<text x="486" y="950" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- nextOrderId: int</text>
+<line x1="480" y1="957" x2="763" y2="957" stroke="#333"/>
+<text x="486" y="970" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ admit(c: Customer): void</text>
+<text x="486" y="984" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ seat(c: Customer, t: Table): void</text>
+<text x="486" y="998" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ openOrder(c: Customer, item: MenuItem,</text>
+<text x="486" y="1012" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">     price: Money, turn: int): Order</text>
+<text x="486" y="1026" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ completePayment(c: Customer): void</text>
+<text x="486" y="1040" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ finishEating(turn: int): List&lt;Customer&gt;</text>
+<text x="486" y="1054" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ handleDeparture(c: Customer): void</text>
+<text x="486" y="1068" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ findQueuedCustomer(id: int): Customer</text>
+<text x="486" y="1082" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ findTable(number: int): Table</text>
+<text x="486" y="1096" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ findOrder(id: int): Order</text>
+<text x="486" y="1110" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getActiveCustomers(): List&lt;Customer&gt;</text>
+<rect x="600" y="1170" width="191" height="91" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="600" y="1170" width="191" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="695.5" y="1186" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Table</text>
+<line x1="600" y1="1193" x2="791" y2="1193" stroke="#333"/>
+<text x="606" y="1206" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- number: int</text>
+<line x1="600" y1="1213" x2="791" y2="1213" stroke="#333"/>
+<text x="606" y="1226" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ isFree(): boolean</text>
+<text x="606" y="1240" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ assign(c: Customer): void</text>
+<text x="606" y="1254" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ release(): void</text>
+<rect x="480" y="1340" width="217" height="105" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="480" y="1340" width="217" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="588.5" y="1356" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Menu</text>
+<line x1="480" y1="1363" x2="697" y2="1363" stroke="#333"/>
+<text x="486" y="1376" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- items: List&lt;MenuItem&gt;</text>
+<line x1="480" y1="1383" x2="697" y2="1383" stroke="#333"/>
+<text x="486" y="1396" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ addItem(item: MenuItem): void</text>
+<text x="486" y="1410" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getItem(index: int): MenuItem</text>
+<text x="486" y="1424" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ size(): int</text>
+<text x="486" y="1438" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ mostExpensive(): MenuItem</text>
+<rect x="850" y="900" width="276" height="343" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="850" y="900" width="276" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="988" y="916" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" font-style="italic" fill="#111">Customer</text>
+<line x1="850" y1="923" x2="1126" y2="923" stroke="#333"/>
+<text x="856" y="936" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ MAX_SATISFACTION: int = 100</text>
+<text x="856" y="950" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- id: int</text>
+<text x="856" y="964" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- arrivalTurn: int</text>
+<text x="856" y="978" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- random: Random</text>
+<text x="856" y="992" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- satisfaction: int</text>
+<text x="856" y="1006" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- status: CustomerStatus</text>
+<text x="856" y="1020" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- servedTurn: int</text>
+<text x="856" y="1034" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- readyToPayTurn: int</text>
+<line x1="850" y1="1041" x2="1126" y2="1041" stroke="#333"/>
+<text x="856" y="1054" font-family="Consolas, 'Courier New', monospace" font-size="11" font-style="italic" fill="#111">+ getSatisfactionLoss(): int</text>
+<text x="856" y="1068" font-family="Consolas, 'Courier New', monospace" font-size="11" font-style="italic" fill="#111">+ getTypeLabel(): String</text>
+<text x="856" y="1082" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ applyDiscount(basePrice: Money): Money</text>
+<text x="856" y="1096" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ chooseItem(menu: Menu): MenuItem</text>
+<text x="856" y="1110" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111"># onServed(turn: int): void</text>
+<text x="856" y="1124" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ loseSatisfaction(): void {leaf}</text>
+<text x="856" y="1138" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ recover(points: int): void {leaf}</text>
+<text x="856" y="1152" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ isAwaitingService(): boolean</text>
+<text x="856" y="1166" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ seatAt(t: Table): void</text>
+<text x="856" y="1180" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ placeOrder(o: Order): void</text>
+<text x="856" y="1194" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ serve(turn: int): void</text>
+<text x="856" y="1208" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ finishEating(turn: int): void</text>
+<text x="856" y="1222" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ pay(): void</text>
+<text x="856" y="1236" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ leave(): void</text>
+<rect x="880" y="1340" width="210" height="176" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="880" y="1340" width="210" height="38" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="985" y="1356" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle" fill="#111">«enumeration»</text>
+<text x="985" y="1371" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">CustomerStatus</text>
+<line x1="880" y1="1378" x2="1090" y2="1378" stroke="#333"/>
+<text x="886" y="1391" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">WAITING</text>
+<text x="886" y="1405" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">SEATED</text>
+<text x="886" y="1419" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">ORDERED</text>
+<text x="886" y="1433" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">EATING</text>
+<text x="886" y="1447" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">READY_TO_PAY</text>
+<text x="886" y="1461" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">PAID</text>
+<text x="886" y="1475" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">LEFT</text>
+<line x1="880" y1="1482" x2="1090" y2="1482" stroke="#333"/>
+<text x="886" y="1495" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ isAwaitingService(): boolean</text>
+<text x="886" y="1509" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ isFinished(): boolean</text>
+<rect x="1210" y="1130" width="197" height="77" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="1210" y="1130" width="197" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="1308.5" y="1146" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">RegularCustomer</text>
+<line x1="1210" y1="1153" x2="1407" y2="1153" stroke="#333"/>
+<text x="1216" y="1166" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ SATISFACTION_LOSS: int = 8</text>
+<line x1="1210" y1="1173" x2="1407" y2="1173" stroke="#333"/>
+<text x="1216" y="1186" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getSatisfactionLoss(): int</text>
+<text x="1216" y="1200" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getTypeLabel(): String</text>
+<rect x="1210" y="900" width="230" height="189" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="1210" y="900" width="230" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="1325" y="916" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Order</text>
+<line x1="1210" y1="923" x2="1440" y2="923" stroke="#333"/>
+<text x="1216" y="936" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- id: int</text>
+<text x="1216" y="950" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- price: Money</text>
+<text x="1216" y="964" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- orderedTurn: int</text>
+<text x="1216" y="978" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- unitsRemaining: int</text>
+<text x="1216" y="992" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- status: OrderStatus</text>
+<text x="1216" y="1006" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- readyTurn: int</text>
+<line x1="1210" y1="1013" x2="1440" y2="1013" stroke="#333"/>
+<text x="1216" y="1026" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ prepareOneUnit(turn: int): void</text>
+<text x="1216" y="1040" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ markServed(): void</text>
+<text x="1216" y="1054" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ markPaid(): void</text>
+<text x="1216" y="1068" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">~ cancel(): void</text>
+<text x="1216" y="1082" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getUnitsDone(): int</text>
+<rect x="1520" y="900" width="106" height="114" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="1520" y="900" width="106" height="38" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="1573" y="916" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle" fill="#111">«enumeration»</text>
+<text x="1573" y="931" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">OrderStatus</text>
+<line x1="1520" y1="938" x2="1626" y2="938" stroke="#333"/>
+<text x="1526" y="951" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">PREPARING</text>
+<text x="1526" y="965" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">READY</text>
+<text x="1526" y="979" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">SERVED</text>
+<text x="1526" y="993" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">PAID</text>
+<text x="1526" y="1007" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">CANCELLED</text>
+<rect x="1520" y="1060" width="151" height="91" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="1520" y="1060" width="151" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="1595.5" y="1076" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" font-style="italic" fill="#111">MenuItem</text>
+<line x1="1520" y1="1083" x2="1671" y2="1083" stroke="#333"/>
+<text x="1526" y="1096" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- name: String</text>
+<line x1="1520" y1="1103" x2="1671" y2="1103" stroke="#333"/>
+<text x="1526" y="1116" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getName(): String</text>
+<text x="1526" y="1130" font-family="Consolas, 'Courier New', monospace" font-size="11" font-style="italic" fill="#111">+ getPrice(): Money</text>
+<text x="1526" y="1144" font-family="Consolas, 'Courier New', monospace" font-size="11" font-style="italic" fill="#111">+ getPrepUnits(): int</text>
+<rect x="1780" y="1060" width="151" height="91" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="1780" y="1060" width="151" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="1855.5" y="1076" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Dish</text>
+<line x1="1780" y1="1083" x2="1931" y2="1083" stroke="#333"/>
+<text x="1786" y="1096" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- price: Money</text>
+<text x="1786" y="1110" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- prepUnits: int</text>
+<line x1="1780" y1="1117" x2="1931" y2="1117" stroke="#333"/>
+<text x="1786" y="1130" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getPrice(): Money</text>
+<text x="1786" y="1144" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getPrepUnits(): int</text>
+<rect x="1780" y="1370" width="237" height="147" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="1780" y="1370" width="237" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="1898.5" y="1386" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Money</text>
+<line x1="1780" y1="1393" x2="2017" y2="1393" stroke="#333"/>
+<text x="1786" y="1406" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ ZERO: Money</text>
+<text x="1786" y="1420" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- cents: long {readOnly}</text>
+<line x1="1780" y1="1427" x2="2017" y2="1427" stroke="#333"/>
+<text x="1786" y="1440" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ ofCents(cents: long): Money</text>
+<text x="1786" y="1454" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ ofDollars(dollars: long): Money</text>
+<text x="1786" y="1468" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ plus(other: Money): Money</text>
+<text x="1786" y="1482" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ percent(percent: int): Money</text>
+<text x="1786" y="1496" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ isAtLeast(other: Money): boolean</text>
+<text x="1786" y="1510" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ toString(): String</text>
+<rect x="1210" y="1235" width="276" height="105" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="1210" y="1235" width="276" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="1348" y="1251" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">VIPCustomer</text>
+<line x1="1210" y1="1258" x2="1486" y2="1258" stroke="#333"/>
+<text x="1216" y="1271" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ SATISFACTION_LOSS: int = 5</text>
+<text x="1216" y="1285" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ PRICE_PERCENT: int = 90</text>
+<line x1="1210" y1="1292" x2="1486" y2="1292" stroke="#333"/>
+<text x="1216" y="1305" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getSatisfactionLoss(): int</text>
+<text x="1216" y="1319" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ applyDiscount(basePrice: Money): Money</text>
+<text x="1216" y="1333" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getTypeLabel(): String</text>
+<rect x="1210" y="1370" width="263" height="147" fill="#fff" stroke="#333" stroke-width="1.2"/>
+<rect x="1210" y="1370" width="263" height="23" fill="#f5e9c4" stroke="#333" stroke-width="1.2"/>
+<text x="1341.5" y="1386" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">CriticCustomer</text>
+<line x1="1210" y1="1393" x2="1473" y2="1393" stroke="#333"/>
+<text x="1216" y="1406" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ SATISFACTION_LOSS: int = 12</text>
+<text x="1216" y="1420" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ PERFECT_SERVICE_BONUS: int = 10</text>
+<text x="1216" y="1434" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ SLOW_SERVICE_PENALTY: int = 10</text>
+<line x1="1210" y1="1441" x2="1473" y2="1441" stroke="#333"/>
+<text x="1216" y="1454" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getSatisfactionLoss(): int</text>
+<text x="1216" y="1468" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ chooseItem(menu: Menu): MenuItem</text>
+<text x="1216" y="1482" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ isPerfectService(turn: int): boolean</text>
+<text x="1216" y="1496" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111"># onServed(turn: int): void</text>
+<text x="1216" y="1510" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getTypeLabel(): String</text>
+<rect x="80" y="1390" width="342" height="51" fill="#fff" stroke="#c0392b" stroke-width="2.2"/>
+<rect x="80" y="1390" width="342" height="23" fill="#f5e9c4" stroke="#c0392b" stroke-width="2.2"/>
+<text x="251" y="1406" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">Host</text>
+<line x1="80" y1="1413" x2="422" y2="1413" stroke="#333"/>
+<line x1="80" y1="1421" x2="422" y2="1421" stroke="#333"/>
+<text x="86" y="1434" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ seat(r: Restaurant, c: Customer, t: Table): void</text>
+<rect x="1780" y="1190" width="177" height="133" fill="#fff" stroke="#c0392b" stroke-width="2.2"/>
+<rect x="1780" y="1190" width="177" height="23" fill="#f5e9c4" stroke="#c0392b" stroke-width="2.2"/>
+<text x="1868.5" y="1206" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">ComboMeal</text>
+<line x1="1780" y1="1213" x2="1957" y2="1213" stroke="#333"/>
+<text x="1786" y="1226" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ PRICE_PERCENT: int = 90</text>
+<text x="1786" y="1240" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- first: MenuItem</text>
+<text x="1786" y="1254" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- second: MenuItem</text>
+<line x1="1780" y1="1261" x2="1957" y2="1261" stroke="#333"/>
+<text x="1786" y="1274" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getPrice(): Money</text>
+<text x="1786" y="1288" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getPrepUnits(): int</text>
+<text x="1786" y="1302" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getFirst(): MenuItem</text>
+<text x="1786" y="1316" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getSecond(): MenuItem</text>
+<rect x="900" y="590" width="204" height="66" fill="#fff" stroke="#c0392b" stroke-width="2.2"/>
+<rect x="900" y="590" width="204" height="38" fill="#d8e3f5" stroke="#c0392b" stroke-width="2.2"/>
+<text x="1002" y="606" font-family="Segoe UI, Arial, sans-serif" font-size="11" text-anchor="middle" fill="#111">«interface»</text>
+<text x="1002" y="621" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">PriceModifier</text>
+<line x1="900" y1="628" x2="1104" y2="628" stroke="#333"/>
+<line x1="900" y1="636" x2="1104" y2="636" stroke="#333"/>
+<text x="906" y="649" font-family="Consolas, 'Courier New', monospace" font-size="11" font-style="italic" fill="#111">+ adjust(price: Money): Money</text>
+<rect x="1250" y="570" width="303" height="203" fill="#fff" stroke="#c0392b" stroke-width="2.2"/>
+<rect x="1250" y="570" width="303" height="23" fill="#d8e3f5" stroke="#c0392b" stroke-width="2.2"/>
+<text x="1401.5" y="586" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#111">HappyHour</text>
+<line x1="1250" y1="593" x2="1553" y2="593" stroke="#333"/>
+<text x="1256" y="606" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ DURATION: int = 2</text>
+<text x="1256" y="620" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ PRICE_PERCENT: int = 80</text>
+<text x="1256" y="634" font-family="Consolas, 'Courier New', monospace" font-size="11" text-decoration="underline" fill="#111">+ RECOVERY: int = 15</text>
+<text x="1256" y="648" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- used: boolean</text>
+<text x="1256" y="662" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">- turnsRemaining: int</text>
+<line x1="1250" y1="669" x2="1553" y2="669" stroke="#333"/>
+<text x="1256" y="682" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ isAvailable(): boolean</text>
+<text x="1256" y="696" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ activate(): void</text>
+<text x="1256" y="710" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ isActive(): boolean</text>
+<text x="1256" y="724" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ getTurnsRemaining(): int</text>
+<text x="1256" y="738" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ applyTurnStartRecovery(r: Restaurant): int</text>
+<text x="1256" y="752" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ endTurn(): void</text>
+<text x="1256" y="766" font-family="Consolas, 'Courier New', monospace" font-size="11" fill="#111">+ adjust(price: Money): Money</text>
+<line x1="262" y1="931" x2="244" y2="935.7" stroke="#8a6d00" stroke-dasharray="3,3"/>
+<path d="M262,900 L437,900 L447,910 L447,962 L262,962 z" fill="#fff8c4" stroke="#8a6d00"/>
+<path d="M437,900 L437,910 L447,910" fill="none" stroke="#8a6d00"/>
+<text x="268" y="915" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#3d3000">One task per turn</text>
+<text x="268" y="928" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">Each action validates first, then</text>
+<text x="268" y="941" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">calls completeTask(), so a rejected</text>
+<text x="268" y="954" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">choice never uses up the task.</text>
+<line x1="737.5" y1="1270" x2="695.5" y2="1261" stroke="#8a6d00" stroke-dasharray="3,3"/>
+<path d="M640,1270 L825,1270 L835,1280 L835,1319 L640,1319 z" fill="#fff8c4" stroke="#8a6d00"/>
+<path d="M825,1270 L825,1280 L835,1280" fill="none" stroke="#8a6d00"/>
+<text x="646" y="1285" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#3d3000">Composition</text>
+<text x="646" y="1298" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">Restaurant creates and owns its</text>
+<text x="646" y="1311" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">Tables; they cannot exist alone.</text>
+<line x1="2030" y1="1409.5" x2="2017" y2="1387.64" stroke="#8a6d00" stroke-dasharray="3,3"/>
+<path d="M2030,1385 L2180,1385 L2190,1395 L2190,1434 L2030,1434 z" fill="#fff8c4" stroke="#8a6d00"/>
+<path d="M2180,1385 L2180,1395 L2190,1395" fill="none" stroke="#8a6d00"/>
+<text x="2036" y="1400" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#3d3000">Encapsulation</text>
+<text x="2036" y="1413" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">Immutable value object;</text>
+<text x="2036" y="1426" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">integer cents, no doubles.</text>
+<line x1="1560" y1="1477.5" x2="1486" y2="1287.5" stroke="#8a6d00" stroke-dasharray="3,3"/>
+<path d="M1560,1440 L1750,1440 L1760,1450 L1760,1515 L1560,1515 z" fill="#fff8c4" stroke="#8a6d00"/>
+<path d="M1750,1440 L1750,1450 L1760,1450" fill="none" stroke="#8a6d00"/>
+<text x="1566" y="1455" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#3d3000">Polymorphism</text>
+<text x="1566" y="1468" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">Game and PriceCalculator call</text>
+<text x="1566" y="1481" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">getSatisfactionLoss(), applyDiscount(),</text>
+<text x="1566" y="1494" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">chooseItem() and onServed() on any</text>
+<text x="1566" y="1507" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">Customer; no instanceof checks.</text>
+<line x1="785" y1="1475" x2="863.8" y2="1243" stroke="#8a6d00" stroke-dasharray="3,3"/>
+<path d="M700,1475 L860,1475 L870,1485 L870,1563 L700,1563 z" fill="#fff8c4" stroke="#8a6d00"/>
+<path d="M860,1475 L860,1485 L870,1485" fill="none" stroke="#8a6d00"/>
+<text x="706" y="1490" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#3d3000">Encapsulation</text>
+<text x="706" y="1503" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">State changes are</text>
+<text x="706" y="1516" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">package-private (~);</text>
+<text x="706" y="1529" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">satisfaction stays 0-100</text>
+<text x="706" y="1542" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">via loseSatisfaction()/</text>
+<text x="706" y="1555" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">recover()/changeSatisfaction().</text>
+<line x1="1305" y1="1560" x2="1315.2" y2="1517" stroke="#8a6d00" stroke-dasharray="3,3"/>
+<path d="M1210,1560 L1390,1560 L1400,1570 L1400,1635 L1210,1635 z" fill="#fff8c4" stroke="#8a6d00"/>
+<path d="M1390,1560 L1390,1570 L1400,1570" fill="none" stroke="#8a6d00"/>
+<text x="1216" y="1575" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#3d3000">Critic special behaviour</text>
+<text x="1216" y="1588" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">Orders menu.mostExpensive().</text>
+<text x="1216" y="1601" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">onServed(): +10 if served by</text>
+<text x="1216" y="1614" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">orderedTurn + prepUnits,</text>
+<text x="1216" y="1627" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">otherwise -10 (harsh review).</text>
+<line x1="1950" y1="1091" x2="1957" y2="1216.6" stroke="#8a6d00" stroke-dasharray="3,3"/>
+<path d="M1950,1060 L2130,1060 L2140,1070 L2140,1122 L1950,1122 z" fill="#fff8c4" stroke="#8a6d00"/>
+<path d="M2130,1060 L2130,1070 L2140,1070" fill="none" stroke="#8a6d00"/>
+<text x="1956" y="1075" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#3d3000">Composite / composition</text>
+<text x="1956" y="1088" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">A ComboMeal is a MenuItem built</text>
+<text x="1956" y="1101" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">from two MenuItems: price = 90%</text>
+<text x="1956" y="1114" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">of their sum, units = their sum.</text>
+<line x1="1640" y1="611" x2="1553" y2="580.15" stroke="#8a6d00" stroke-dasharray="3,3"/>
+<path d="M1640,580 L1840,580 L1850,590 L1850,642 L1640,642 z" fill="#fff8c4" stroke="#8a6d00"/>
+<path d="M1840,580 L1840,590 L1850,590" fill="none" stroke="#8a6d00"/>
+<text x="1646" y="595" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#3d3000">Open/closed pricing</text>
+<text x="1646" y="608" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">Customer discount first, then each</text>
+<text x="1646" y="621" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">PriceModifier. Happy Hour was added</text>
+<text x="1646" y="634" font-family="Segoe UI, Arial, sans-serif" font-size="10.5" fill="#3d3000">without touching Waiter or Order.</text>
+<rect x="1930" y="80" width="250" height="178" fill="#fff" stroke="#999"/>
+<text x="1938" y="96" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="bold">Legend</text>
+<path d="M1940,114 L2000,114" stroke="#333" stroke-width="1.2" fill="none" marker-end="url(#tri)"/>
+<text x="2010" y="118" font-family="Segoe UI, Arial, sans-serif" font-size="11">generalisation (extends)</text>
+<path d="M1940,132 L2000,132" stroke="#333" stroke-width="1.2" fill="none" stroke-dasharray="5,4" marker-end="url(#tri)"/>
+<text x="2010" y="136" font-family="Segoe UI, Arial, sans-serif" font-size="11">realisation (implements)</text>
+<path d="M1940,150 L2000,150" stroke="#333" stroke-width="1.2" fill="none" marker-start="url(#dfill)"/>
+<text x="2010" y="154" font-family="Segoe UI, Arial, sans-serif" font-size="11">composition (owns)</text>
+<path d="M1940,168 L2000,168" stroke="#333" stroke-width="1.2" fill="none" marker-start="url(#dhollow)"/>
+<text x="2010" y="172" font-family="Segoe UI, Arial, sans-serif" font-size="11">aggregation (has)</text>
+<path d="M1940,186 L2000,186" stroke="#333" stroke-width="1.2" fill="none" marker-end="url(#open)"/>
+<text x="2010" y="190" font-family="Segoe UI, Arial, sans-serif" font-size="11">association (navigable)</text>
+<path d="M1940,204 L2000,204" stroke="#333" stroke-width="1.2" fill="none" stroke-dasharray="5,4" marker-end="url(#open)"/>
+<text x="2010" y="208" font-family="Segoe UI, Arial, sans-serif" font-size="11">dependency (uses / creates)</text>
+<text x="1940" y="226" font-family="Consolas, 'Courier New', monospace" font-size="11">+ public  - private  # protected  ~ package</text>
+<rect x="1940" y="232" width="22" height="10" fill="#fff" stroke="#c0392b" stroke-width="2"/>
+<text x="1970" y="241" font-family="Segoe UI, Arial, sans-serif" font-size="11">new in Stage 3</text>
+</svg>

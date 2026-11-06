@@ -1,0 +1,88 @@
+# Stage 2 victory run (seed 2003). Run: java -cp out restaurantrush.Main --echo < runs/stage2-victory.txt
+# Arrivals: C1 Regular (t1), C2 VIP (t4), C3 Regular (t7), C4 Critic (t10), C5 Regular (t13), C6 Regular (t16).
+# Key decision: on turn 13 the Waiter serves the Critic on the earliest possible turn (+10 reaction)
+# instead of seating C5, who waits one turn in the queue.
+# Turn 1: seat C1 at Table 1
+1
+1
+1
+0
+# Turn 2: take order at Table 1; cook order 1
+2
+1
+1
+1
+# Turn 3: serve order 1
+3
+1
+0
+# Turn 4: seat C2 (VIP) at Table 2
+1
+2
+2
+0
+# Turn 5: take order at Table 2 (VIP price is 10% off); cook order 2
+2
+2
+1
+2
+# Turn 6: serve order 2
+3
+2
+0
+# Turn 7: seat C3 at Table 1
+1
+3
+1
+0
+# Turn 8: take order at Table 1; cook order 3
+2
+1
+1
+3
+# Turn 9: serve order 3
+3
+3
+0
+# Turn 10: seat C4 (Critic) at Table 2
+1
+4
+2
+0
+# Turn 11: take the Critic's order (always the most expensive: Pasta); cook unit 1
+2
+2
+1
+4
+# Turn 12: Waiter has nothing to do; cook unit 2, Pasta READY
+0
+1
+4
+# Turn 13: serve the Critic on time (ordered turn 11 + 2 units = 13); C5 waits in the queue
+3
+4
+0
+# Turn 14: seat C5 at Table 1
+1
+5
+1
+0
+# Turn 15: take order at Table 1; cook order 5
+2
+1
+1
+5
+# Turn 16: serve order 5 (C6 arrives and waits)
+3
+5
+0
+# Turn 17: seat C6 at Table 2
+1
+6
+2
+0
+# Turn 18: take order at Table 2; cook order 6. C5 pays this turn.
+2
+2
+1
+6
