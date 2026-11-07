@@ -1,0 +1,603 @@
+=================================================================
+                 RESTAURANT RUSH - Manager's Shift
+=================================================================
+You manage a small restaurant for 18 turns with 2 tables, one Waiter, one Chef and one Cashier.
+Customers choose their own food. You decide what your staff do each turn.
+
+Menu:
+  - Salad ($9.00, 1 unit)
+  - Burger ($15.00, 1 unit)
+  - Pasta ($18.00, 2 units)
+
+Objective after turn 18: at least 4 paid customers, revenue at least $45.00, average satisfaction of paid customers at least 60.
+Seed: 2003
+
+=================================================================
+                           TURN 1 / 18
+=================================================================
+  * C1 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 1 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0
+
+Waiting queue:
+  C1 (Regular)   sat 100  WAITING      arrived turn 1
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C1
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 1
+  Customer number to seat (e.g. 2 for C2) > 1
+  Table number > 1
+  * Waiter seated C1 (Regular) at Table 1.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 0
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 1: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 1/18
+Satisfaction now: C1=92
+
+=================================================================
+                           TURN 2 / 18
+=================================================================
+Turn 2 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: C1 (Regular)   sat  92  SEATED      
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : take order at Table 1
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 2
+  Table number to take the order from > 1
+  * Waiter took order #1: C1 (Regular) ordered Burger (1 prep unit) for $15.00.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 1
+  Order number to cook > 1
+  * Chef finished order #1 Burger for C1 (unit 1 of 1). It is READY and can be served next turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 2: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 2/18
+Satisfaction now: C1=84
+
+=================================================================
+                           TURN 3 / 18
+=================================================================
+Turn 3 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: C1 (Regular)   sat  84  ORDERED      order #1 Burger READY
+  Table 2: (free)
+Orders:
+  #1 Burger     for C1 (Regular)   READY     1/1 units  bill $15.00
+Staff tasks available:
+  Waiter : serve #1
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 3
+  Order number to serve > 1
+  * Waiter served order #1 Burger for C1. C1 (Regular) is now eating (satisfaction 84).
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 0
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 3: served 1 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 3/18
+Satisfaction now: C1=84
+
+=================================================================
+                           TURN 4 / 18
+=================================================================
+  * C2 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 4 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0
+
+Waiting queue:
+  C2 (Regular)   sat 100  WAITING      arrived turn 4
+Tables:
+  Table 1: C1 (Regular)   sat  84  EATING       order #1 Burger SERVED
+  Table 2: (free)
+Orders:
+  #1 Burger     for C1 (Regular)   SERVED    1/1 units  bill $15.00
+Staff tasks available:
+  Waiter : seat C2
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+  * C1 (Regular) finished eating and is READY_TO_PAY (pays next turn at the earliest).
+
+End of turn 4: served 1 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 4/18
+Satisfaction now: C1=84 C2=92
+
+=================================================================
+                           TURN 5 / 18
+=================================================================
+Turn 5 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0
+
+Waiting queue:
+  C2 (Regular)   sat  92  WAITING      arrived turn 4
+Tables:
+  Table 1: C1 (Regular)   sat  84  READY_TO_PAY order #1 Burger SERVED
+  Table 2: (free)
+Orders:
+  #1 Burger     for C1 (Regular)   SERVED    1/1 units  bill $15.00
+Staff tasks available:
+  Waiter : seat C2
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+  * Cashier collected $15.00 from C1 (Regular). Satisfaction 84 recorded; table freed.
+
+End of turn 5: served 1 | unhappy departures 0 | revenue $15.00 | avg satisfaction 84.0 | turns used 5/18
+Satisfaction now: C2=84
+
+=================================================================
+                           TURN 6 / 18
+=================================================================
+Turn 6 | Revenue $15.00 | Avg satisfaction (paid) 84.0 | Paid 1
+
+Waiting queue:
+  C2 (Regular)   sat  84  WAITING      arrived turn 4
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C2
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 6: served 1 | unhappy departures 0 | revenue $15.00 | avg satisfaction 84.0 | turns used 6/18
+Satisfaction now: C2=76
+
+=================================================================
+                           TURN 7 / 18
+=================================================================
+  * C3 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 7 | Revenue $15.00 | Avg satisfaction (paid) 84.0 | Paid 1
+
+Waiting queue:
+  C2 (Regular)   sat  76  WAITING      arrived turn 4
+  C3 (Regular)   sat 100  WAITING      arrived turn 7
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C2 | seat C3
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 7: served 1 | unhappy departures 0 | revenue $15.00 | avg satisfaction 84.0 | turns used 7/18
+Satisfaction now: C2=68 C3=92
+
+=================================================================
+                           TURN 8 / 18
+=================================================================
+Turn 8 | Revenue $15.00 | Avg satisfaction (paid) 84.0 | Paid 1
+
+Waiting queue:
+  C2 (Regular)   sat  68  WAITING      arrived turn 4
+  C3 (Regular)   sat  92  WAITING      arrived turn 7
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C2 | seat C3
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 8: served 1 | unhappy departures 0 | revenue $15.00 | avg satisfaction 84.0 | turns used 8/18
+Satisfaction now: C2=60 C3=84
+
+=================================================================
+                           TURN 9 / 18
+=================================================================
+Turn 9 | Revenue $15.00 | Avg satisfaction (paid) 84.0 | Paid 1
+
+Waiting queue:
+  C2 (Regular)   sat  60  WAITING      arrived turn 4
+  C3 (Regular)   sat  84  WAITING      arrived turn 7
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C2 | seat C3
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 9: served 1 | unhappy departures 0 | revenue $15.00 | avg satisfaction 84.0 | turns used 9/18
+Satisfaction now: C2=52 C3=76
+
+=================================================================
+                          TURN 10 / 18
+=================================================================
+  * C4 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 10 | Revenue $15.00 | Avg satisfaction (paid) 84.0 | Paid 1
+
+Waiting queue:
+  C2 (Regular)   sat  52  WAITING      arrived turn 4
+  C3 (Regular)   sat  76  WAITING      arrived turn 7
+  C4 (Regular)   sat 100  WAITING      arrived turn 10
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C2 | seat C3 | seat C4
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 10: served 1 | unhappy departures 0 | revenue $15.00 | avg satisfaction 84.0 | turns used 10/18
+Satisfaction now: C2=44 C3=68 C4=92
+
+=================================================================
+                          TURN 11 / 18
+=================================================================
+Turn 11 | Revenue $15.00 | Avg satisfaction (paid) 84.0 | Paid 1
+
+Waiting queue:
+  C2 (Regular)   sat  44  WAITING      arrived turn 4
+  C3 (Regular)   sat  68  WAITING      arrived turn 7
+  C4 (Regular)   sat  92  WAITING      arrived turn 10
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C2 | seat C3 | seat C4
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 11: served 1 | unhappy departures 0 | revenue $15.00 | avg satisfaction 84.0 | turns used 11/18
+Satisfaction now: C2=36 C3=60 C4=84
+
+=================================================================
+                          TURN 12 / 18
+=================================================================
+Turn 12 | Revenue $15.00 | Avg satisfaction (paid) 84.0 | Paid 1
+
+Waiting queue:
+  C2 (Regular)   sat  36  WAITING      arrived turn 4
+  C3 (Regular)   sat  60  WAITING      arrived turn 7
+  C4 (Regular)   sat  84  WAITING      arrived turn 10
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C2 | seat C3 | seat C4
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 12: served 1 | unhappy departures 0 | revenue $15.00 | avg satisfaction 84.0 | turns used 12/18
+Satisfaction now: C2=28 C3=52 C4=76
+
+=================================================================
+                          TURN 13 / 18
+=================================================================
+  * C5 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 13 | Revenue $15.00 | Avg satisfaction (paid) 84.0 | Paid 1
+
+Waiting queue:
+  C2 (Regular)   sat  28  WAITING      arrived turn 4
+  C3 (Regular)   sat  52  WAITING      arrived turn 7
+  C4 (Regular)   sat  76  WAITING      arrived turn 10
+  C5 (Regular)   sat 100  WAITING      arrived turn 13
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C2 | seat C3 | seat C4 | seat C5
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 13: served 1 | unhappy departures 0 | revenue $15.00 | avg satisfaction 84.0 | turns used 13/18
+Satisfaction now: C2=20 C3=44 C4=68 C5=92
+
+=================================================================
+                          TURN 14 / 18
+=================================================================
+Turn 14 | Revenue $15.00 | Avg satisfaction (paid) 84.0 | Paid 1
+
+Waiting queue:
+  C2 (Regular)   sat  20  WAITING      arrived turn 4
+  C3 (Regular)   sat  44  WAITING      arrived turn 7
+  C4 (Regular)   sat  68  WAITING      arrived turn 10
+  C5 (Regular)   sat  92  WAITING      arrived turn 13
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C2 | seat C3 | seat C4 | seat C5
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 14: served 1 | unhappy departures 0 | revenue $15.00 | avg satisfaction 84.0 | turns used 14/18
+Satisfaction now: C2=12 C3=36 C4=60 C5=84
+
+=================================================================
+                          TURN 15 / 18
+=================================================================
+Turn 15 | Revenue $15.00 | Avg satisfaction (paid) 84.0 | Paid 1
+
+Waiting queue:
+  C2 (Regular)   sat  12  WAITING      arrived turn 4
+  C3 (Regular)   sat  36  WAITING      arrived turn 7
+  C4 (Regular)   sat  60  WAITING      arrived turn 10
+  C5 (Regular)   sat  84  WAITING      arrived turn 13
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C2 | seat C3 | seat C4 | seat C5
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 15: served 1 | unhappy departures 0 | revenue $15.00 | avg satisfaction 84.0 | turns used 15/18
+Satisfaction now: C2=4 C3=28 C4=52 C5=76
+
+=================================================================
+                          TURN 16 / 18
+=================================================================
+  * C6 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 16 | Revenue $15.00 | Avg satisfaction (paid) 84.0 | Paid 1
+
+Waiting queue:
+  C2 (Regular)   sat   4  WAITING      arrived turn 4
+  C3 (Regular)   sat  28  WAITING      arrived turn 7
+  C4 (Regular)   sat  52  WAITING      arrived turn 10
+  C5 (Regular)   sat  76  WAITING      arrived turn 13
+  C6 (Regular)   sat 100  WAITING      arrived turn 16
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C2 | seat C3 | seat C4 | seat C5 | seat C6
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+  * C2 (Regular) lost all patience and left without paying.
+
+End of turn 16: served 1 | unhappy departures 1 | revenue $15.00 | avg satisfaction 84.0 | turns used 16/18
+Satisfaction now: C3=20 C4=44 C5=68 C6=92
+
+=================================================================
+                          TURN 17 / 18
+=================================================================
+Turn 17 | Revenue $15.00 | Avg satisfaction (paid) 84.0 | Paid 1
+
+Waiting queue:
+  C3 (Regular)   sat  20  WAITING      arrived turn 7
+  C4 (Regular)   sat  44  WAITING      arrived turn 10
+  C5 (Regular)   sat  68  WAITING      arrived turn 13
+  C6 (Regular)   sat  92  WAITING      arrived turn 16
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C3 | seat C4 | seat C5 | seat C6
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 17: served 1 | unhappy departures 1 | revenue $15.00 | avg satisfaction 84.0 | turns used 17/18
+Satisfaction now: C3=12 C4=36 C5=60 C6=84
+
+=================================================================
+                          TURN 18 / 18
+=================================================================
+Turn 18 | Revenue $15.00 | Avg satisfaction (paid) 84.0 | Paid 1
+
+Waiting queue:
+  C3 (Regular)   sat  12  WAITING      arrived turn 7
+  C4 (Regular)   sat  36  WAITING      arrived turn 10
+  C5 (Regular)   sat  60  WAITING      arrived turn 13
+  C6 (Regular)   sat  84  WAITING      arrived turn 16
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Waiter : seat C3 | seat C4 | seat C5 | seat C6
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 18: served 1 | unhappy departures 1 | revenue $15.00 | avg satisfaction 84.0 | turns used 18/18
+Satisfaction now: C3=4 C4=28 C5=52 C6=76
+
+=================================================================
+                         *** DEFEAT ***
+=================================================================
+[MISSED] Paid customers: 1 (target 4)
+[MISSED] Revenue: $15.00 (target $45.00)
+[MET]    Average satisfaction: 84.0 (target 60)
+Dishes served: 1 | Unhappy departures: 1 | Turns used: 18/18

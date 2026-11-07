@@ -1,0 +1,132 @@
+# Stage 3 victory run (seed 2003). Run: java -cp out restaurantrush.Main --echo < runs/stage3-victory.txt
+# Each turn asks (while unused) about Happy Hour, then Host, Waiter and Chef.
+# Orders: C1 Burger, C2 (VIP) Salad + Burger Combo, C3 Salad, C4 (Critic) Burger + Pasta Combo (3 units),
+#         C5 Salad + Pasta Combo (3 units), C6 Burger + Pasta Combo.
+# Strategy: the Host seats each arrival so the Waiter can take the order on the same turn.
+# Key decision on turn 13: the Critic's combo is READY, but C5 has just arrived with a 3-unit combo.
+# Serving the Critic first would make C5 too late to pay before turn 18, so the manager switches on
+# Happy Hour, takes C5's order (20% off) and serves the Critic one turn late. Happy Hour's +15
+# recovery on turns 13 and 14 keeps the Critic satisfied despite the -10 late-service reaction.
+# Turn 1: no Happy Hour; Host seats C1 at Table 1; Waiter takes order; Chef cooks order 1
+n
+1
+1
+1
+2
+1
+1
+1
+# Turn 2: Host waits; Waiter serves order 1; Chef waits
+n
+0
+3
+1
+0
+# Turn 3: nothing to do
+n
+0
+0
+0
+# Turn 4: Host seats C2 (VIP) at Table 2; Waiter takes order; Chef cooks order 2 (unit 1 of 2)
+n
+1
+2
+2
+2
+2
+1
+2
+# Turn 5: Chef cooks order 2 (unit 2 of 2)
+n
+0
+0
+1
+2
+# Turn 6: Waiter serves order 2
+n
+0
+3
+2
+0
+# Turn 7: Host seats C3 at Table 1; Waiter takes order; Chef cooks order 3
+n
+1
+3
+1
+2
+1
+1
+3
+# Turn 8: Waiter serves order 3
+n
+0
+3
+3
+0
+# Turn 9: nothing to do
+n
+0
+0
+0
+# Turn 10: Host seats C4 (Critic) at Table 2; Waiter takes order; Chef cooks order 4 (unit 1 of 3)
+n
+1
+4
+2
+2
+2
+1
+4
+# Turn 11: Chef cooks order 4 (unit 2 of 3)
+n
+0
+0
+1
+4
+# Turn 12: Chef cooks order 4 (unit 3 of 3): READY
+n
+0
+0
+1
+4
+# Turn 13: Happy Hour ON; Host seats C5 at Table 1; Waiter takes C5's order (20% off); Chef cooks order 5
+y
+1
+5
+1
+2
+1
+1
+5
+# Turn 14: Waiter serves the Critic (one turn late); Chef cooks order 5 (unit 2 of 3)
+0
+3
+4
+1
+5
+# Turn 15: Chef cooks order 5 (unit 3 of 3): READY
+0
+0
+1
+5
+# Turn 16: C6 arrives; the Host tries Table 2 (still occupied: rejected), then waits; Waiter serves order 5
+1
+6
+2
+0
+3
+5
+0
+# Turn 17: Host seats C6 at Table 2; Waiter takes order; Chef cooks order 6
+1
+6
+2
+2
+2
+1
+6
+# Turn 18: Chef cooks order 6. C5 pays this turn.
+0
+0
+1
+6

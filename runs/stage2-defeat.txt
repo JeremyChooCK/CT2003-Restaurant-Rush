@@ -1,0 +1,32 @@
+# Stage 2 defeat run (seed 2003). Run: java -cp out restaurantrush.Main --echo < runs/stage2-defeat.txt
+# The manager serves C1 and the VIP, then stops managing. The impatient Critic (loses 12 per turn)
+# walks out at the end of turn 18 and the targets are missed.
+# Turn 1: seat C1 at Table 1
+1
+1
+1
+0
+# Turn 2: take order at Table 1; cook order 1
+2
+1
+1
+1
+# Turn 3: serve order 1
+3
+1
+0
+# Turn 4: seat C2 (VIP) at Table 2
+1
+2
+2
+0
+# Turn 5: take order at Table 2; cook order 2
+2
+2
+1
+2
+# Turn 6: serve order 2
+3
+2
+0
+# Turns 7-18: the script ends, so every remaining choice defaults to 0 = Wait.

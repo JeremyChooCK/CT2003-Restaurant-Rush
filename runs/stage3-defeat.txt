@@ -1,0 +1,26 @@
+# Stage 3 defeat run (seed 2003). Run: java -cp out restaurantrush.Main --echo < runs/stage3-defeat.txt
+# The manager wastes Happy Hour on turn 1, seats and takes orders for C1 and C2, but never lets the
+# Chef cook. Nobody is served, customers drain away and every target is missed.
+# Turn 1: Happy Hour ON straight away; Host seats C1 at Table 1; Waiter takes order; Chef waits
+y
+1
+1
+1
+2
+1
+0
+# Turns 2-3: everyone waits
+0
+0
+0
+0
+0
+0
+# Turn 4: Host seats C2 (VIP) at Table 2; Waiter takes order; Chef waits
+1
+2
+2
+2
+2
+0
+# Turns 5-18: the script ends, so every remaining choice defaults to 0 = Wait.

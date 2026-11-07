@@ -1,0 +1,40 @@
+PASS  Money: 90% of $27.00 is $24.30
+PASS  Money: $15 x 90% x 80% is $10.80
+PASS  Money: $9.00 + $15.00 = $24.00
+PASS  3.3 turn 1: seated, satisfaction 92
+PASS  3.3 turn 2: Pasta ordered, 1 of 2 units, satisfaction 84
+PASS  3.3 turn 3: READY, satisfaction 76
+PASS  3.3 turn 4: SERVED, satisfaction stays 76
+PASS  3.3 turn 5: READY_TO_PAY
+PASS  3.3 turn 6: PAID $18.00 with satisfaction 76, table freed
+PASS  Take order at an empty table is rejected ("Table 2 is empty.")
+PASS  Seating at Table 9 is rejected ("There is no Table 9. Tables are numbered 1 to 2.")
+PASS  Cooking a missing order is rejected ("There is no order #5.")
+PASS  Waiter can still act after rejected choices
+PASS  Waiter cannot do a second task ("The Waiter has already completed a task this turn.")
+PASS  Serving a dish finished this turn is rejected ("Order #1 Pasta for C1 was finished this turn. It can be served next turn.")
+PASS  The same dish can be served next turn
+PASS  Regular left at end of turn 13 (100 - 13 x 8 < 0)
+PASS  Departure counted, no revenue
+PASS  All-wait base game ends in DEFEAT after 18 turns
+PASS  VIP pays 90%: $18.00 becomes $16.20
+PASS  VIP loses 5 per waiting turn
+PASS  VIP order is locked at 90% of the menu price
+PASS  Critic orders the most expensive item (Burger + Pasta Combo)
+PASS  Critic loses 12 per waiting turn
+PASS  Critic served on time: +10 (satisfaction 62)
+PASS  Critic served one turn late: -10 (satisfaction 30)
+PASS  Salad + Pasta Combo costs $24.30 and needs 3 units
+PASS  Salad + Burger Combo costs $21.60 and needs 2 units
+PASS  Most expensive item is the Burger + Pasta Combo ($29.70)
+PASS  Before Happy Hour a VIP Burger costs $13.50
+PASS  VIP Burger during Happy Hour: $15 x 0.9 x 0.8 = $10.80
+PASS  Happy Hour cannot be activated twice ("Happy Hour can only be used once per game.")
+PASS  Waiting customer recovers 15 at the start of a Happy Hour turn (84 -> 99)
+PASS  Happy Hour shows 2 turns left on its first turn
+PASS  Order placed before Happy Hour keeps its locked price
+PASS  Happy Hour still active on its second turn
+PASS  Happy Hour ends after two turns
+PASS  Happy Hour cannot be used again in the same game ("Happy Hour can only be used once per game.")
+PASS  Host seats C1 and the Waiter takes the order in the same turn
+ALL CHECKS PASSED

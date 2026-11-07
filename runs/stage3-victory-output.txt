@@ -1,0 +1,734 @@
+=================================================================
+                 RESTAURANT RUSH - Manager's Shift
+=================================================================
+You manage a small restaurant for 18 turns with 2 tables, one Host, one Waiter, one Chef and one Cashier.
+Customers: Regular (loses 8 per waiting turn), VIP (loses 5, 10% off),
+           Critic (loses 12, orders the priciest item, +10 if served on time, else -10).
+Happy Hour (once per game, 2 turns): 20% off new orders, waiting customers recover 15 per turn.
+Customers choose their own food. You decide what your staff do each turn.
+
+Menu:
+  - Salad ($9.00, 1 unit)
+  - Burger ($15.00, 1 unit)
+  - Pasta ($18.00, 2 units)
+  - Salad + Burger Combo ($21.60, 2 units)
+  - Salad + Pasta Combo ($24.30, 3 units)
+  - Burger + Pasta Combo ($29.70, 3 units)
+
+Objective after turn 18: at least 4 paid customers, revenue at least $45.00, average satisfaction of paid customers at least 60.
+Seed: 2003
+Start of turn 1: switch on Happy Hour now for turns 1-2? It can be used once per game. (y/n) > n
+
+=================================================================
+                           TURN 1 / 18
+=================================================================
+  * C1 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 1 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour available
+
+Waiting queue:
+  C1 (Regular)   sat 100  WAITING      arrived turn 1
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Host   : seat one queued customer (before the Waiter acts)
+  Waiter : seat C1
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 1
+  Customer number to seat (e.g. 2 for C2) > 1
+  Table number > 1
+  * Host seated C1 (Regular) at Table 1.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 2
+  Table number to take the order from > 1
+  * Waiter took order #1: C1 (Regular) ordered Burger (1 prep unit) for $15.00.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 1
+  Order number to cook > 1
+  * Chef finished order #1 Burger for C1 (unit 1 of 1). It is READY and can be served next turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 1: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 1/18
+Satisfaction now: C1=92
+Start of turn 2: switch on Happy Hour now for turns 2-3? It can be used once per game. (y/n) > n
+
+=================================================================
+                           TURN 2 / 18
+=================================================================
+Turn 2 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour available
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: C1 (Regular)   sat  92  ORDERED      order #1 Burger READY
+  Table 2: (free)
+Orders:
+  #1 Burger     for C1 (Regular)   READY     1/1 units  bill $15.00
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : serve #1
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 3
+  Order number to serve > 1
+  * Waiter served order #1 Burger for C1. C1 (Regular) is now eating (satisfaction 92).
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 0
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 2: served 1 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 2/18
+Satisfaction now: C1=92
+Start of turn 3: switch on Happy Hour now for turns 3-4? It can be used once per game. (y/n) > n
+
+=================================================================
+                           TURN 3 / 18
+=================================================================
+Turn 3 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour available
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: C1 (Regular)   sat  92  EATING       order #1 Burger SERVED
+  Table 2: (free)
+Orders:
+  #1 Burger     for C1 (Regular)   SERVED    1/1 units  bill $15.00
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 0
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 0
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+  * C1 (Regular) finished eating and is READY_TO_PAY (pays next turn at the earliest).
+
+End of turn 3: served 1 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 3/18
+Satisfaction now: C1=92
+Start of turn 4: switch on Happy Hour now for turns 4-5? It can be used once per game. (y/n) > n
+
+=================================================================
+                           TURN 4 / 18
+=================================================================
+  * C2 (VIP) arrived and joined the waiting queue (satisfaction 100).
+Turn 4 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour available
+
+Waiting queue:
+  C2 (VIP)       sat 100  WAITING      arrived turn 4
+Tables:
+  Table 1: C1 (Regular)   sat  92  READY_TO_PAY order #1 Burger SERVED
+  Table 2: (free)
+Orders:
+  #1 Burger     for C1 (Regular)   SERVED    1/1 units  bill $15.00
+Staff tasks available:
+  Host   : seat one queued customer (before the Waiter acts)
+  Waiter : seat C2
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 1
+  Customer number to seat (e.g. 2 for C2) > 2
+  Table number > 2
+  * Host seated C2 (VIP) at Table 2.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 2
+  Table number to take the order from > 2
+  * Waiter took order #2: C2 (VIP) ordered Salad + Burger Combo (2 prep units) for $19.44 (menu price $21.60).
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 1
+  Order number to cook > 2
+  * Chef worked on order #2 Salad + Burger Combo for C2 (unit 1 of 2).
+
+--- Eating, payment and waiting ---
+  * Cashier collected $15.00 from C1 (Regular). Satisfaction 92 recorded; table freed.
+
+End of turn 4: served 1 | unhappy departures 0 | revenue $15.00 | avg satisfaction 92.0 | turns used 4/18
+Satisfaction now: C2=95
+Start of turn 5: switch on Happy Hour now for turns 5-6? It can be used once per game. (y/n) > n
+
+=================================================================
+                           TURN 5 / 18
+=================================================================
+Turn 5 | Revenue $15.00 | Avg satisfaction (paid) 92.0 | Paid 1 | Happy Hour available
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: (free)
+  Table 2: C2 (VIP)       sat  95  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 1/2 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #2 (1 unit left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 0
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 1
+  Order number to cook > 2
+  * Chef finished order #2 Salad + Burger Combo for C2 (unit 2 of 2). It is READY and can be served next turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 5: served 1 | unhappy departures 0 | revenue $15.00 | avg satisfaction 92.0 | turns used 5/18
+Satisfaction now: C2=90
+Start of turn 6: switch on Happy Hour now for turns 6-7? It can be used once per game. (y/n) > n
+
+=================================================================
+                           TURN 6 / 18
+=================================================================
+Turn 6 | Revenue $15.00 | Avg satisfaction (paid) 92.0 | Paid 1 | Happy Hour available
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: (free)
+  Table 2: C2 (VIP)       sat  90  ORDERED      order #2 Salad + Burger Combo READY
+Orders:
+  #2 Salad + Burger Combo for C2 (VIP)       READY     2/2 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : serve #2
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 3
+  Order number to serve > 2
+  * Waiter served order #2 Salad + Burger Combo for C2. C2 (VIP) is now eating (satisfaction 90).
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 0
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 6: served 2 | unhappy departures 0 | revenue $15.00 | avg satisfaction 92.0 | turns used 6/18
+Satisfaction now: C2=90
+Start of turn 7: switch on Happy Hour now for turns 7-8? It can be used once per game. (y/n) > n
+
+=================================================================
+                           TURN 7 / 18
+=================================================================
+  * C3 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 7 | Revenue $15.00 | Avg satisfaction (paid) 92.0 | Paid 1 | Happy Hour available
+
+Waiting queue:
+  C3 (Regular)   sat 100  WAITING      arrived turn 7
+Tables:
+  Table 1: (free)
+  Table 2: C2 (VIP)       sat  90  EATING       order #2 Salad + Burger Combo SERVED
+Orders:
+  #2 Salad + Burger Combo for C2 (VIP)       SERVED    2/2 units  bill $19.44
+Staff tasks available:
+  Host   : seat one queued customer (before the Waiter acts)
+  Waiter : seat C3
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 1
+  Customer number to seat (e.g. 2 for C2) > 3
+  Table number > 1
+  * Host seated C3 (Regular) at Table 1.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 2
+  Table number to take the order from > 1
+  * Waiter took order #3: C3 (Regular) ordered Salad (1 prep unit) for $9.00.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 1
+  Order number to cook > 3
+  * Chef finished order #3 Salad for C3 (unit 1 of 1). It is READY and can be served next turn.
+
+--- Eating, payment and waiting ---
+  * C2 (VIP) finished eating and is READY_TO_PAY (pays next turn at the earliest).
+
+End of turn 7: served 2 | unhappy departures 0 | revenue $15.00 | avg satisfaction 92.0 | turns used 7/18
+Satisfaction now: C2=90 C3=92
+Start of turn 8: switch on Happy Hour now for turns 8-9? It can be used once per game. (y/n) > n
+
+=================================================================
+                           TURN 8 / 18
+=================================================================
+Turn 8 | Revenue $15.00 | Avg satisfaction (paid) 92.0 | Paid 1 | Happy Hour available
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: C3 (Regular)   sat  92  ORDERED      order #3 Salad READY
+  Table 2: C2 (VIP)       sat  90  READY_TO_PAY order #2 Salad + Burger Combo SERVED
+Orders:
+  #2 Salad + Burger Combo for C2 (VIP)       SERVED    2/2 units  bill $19.44
+  #3 Salad      for C3 (Regular)   READY     1/1 units  bill $9.00
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : serve #3
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 3
+  Order number to serve > 3
+  * Waiter served order #3 Salad for C3. C3 (Regular) is now eating (satisfaction 92).
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 0
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+  * Cashier collected $19.44 from C2 (VIP). Satisfaction 90 recorded; table freed.
+
+End of turn 8: served 3 | unhappy departures 0 | revenue $34.44 | avg satisfaction 91.0 | turns used 8/18
+Satisfaction now: C3=92
+Start of turn 9: switch on Happy Hour now for turns 9-10? It can be used once per game. (y/n) > n
+
+=================================================================
+                           TURN 9 / 18
+=================================================================
+Turn 9 | Revenue $34.44 | Avg satisfaction (paid) 91.0 | Paid 2 | Happy Hour available
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: C3 (Regular)   sat  92  EATING       order #3 Salad SERVED
+  Table 2: (free)
+Orders:
+  #3 Salad      for C3 (Regular)   SERVED    1/1 units  bill $9.00
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 0
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 0
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+  * C3 (Regular) finished eating and is READY_TO_PAY (pays next turn at the earliest).
+
+End of turn 9: served 3 | unhappy departures 0 | revenue $34.44 | avg satisfaction 91.0 | turns used 9/18
+Satisfaction now: C3=92
+Start of turn 10: switch on Happy Hour now for turns 10-11? It can be used once per game. (y/n) > n
+
+=================================================================
+                          TURN 10 / 18
+=================================================================
+  * C4 (Critic) arrived and joined the waiting queue (satisfaction 100).
+Turn 10 | Revenue $34.44 | Avg satisfaction (paid) 91.0 | Paid 2 | Happy Hour available
+
+Waiting queue:
+  C4 (Critic)    sat 100  WAITING      arrived turn 10
+Tables:
+  Table 1: C3 (Regular)   sat  92  READY_TO_PAY order #3 Salad SERVED
+  Table 2: (free)
+Orders:
+  #3 Salad      for C3 (Regular)   SERVED    1/1 units  bill $9.00
+Staff tasks available:
+  Host   : seat one queued customer (before the Waiter acts)
+  Waiter : seat C4
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 1
+  Customer number to seat (e.g. 2 for C2) > 4
+  Table number > 2
+  * Host seated C4 (Critic) at Table 2.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 2
+  Table number to take the order from > 2
+  * Waiter took order #4: C4 (Critic) ordered Burger + Pasta Combo (3 prep units) for $29.70.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 1
+  Order number to cook > 4
+  * Chef worked on order #4 Burger + Pasta Combo for C4 (unit 1 of 3).
+
+--- Eating, payment and waiting ---
+  * Cashier collected $9.00 from C3 (Regular). Satisfaction 92 recorded; table freed.
+
+End of turn 10: served 3 | unhappy departures 0 | revenue $43.44 | avg satisfaction 91.3 | turns used 10/18
+Satisfaction now: C4=88
+Start of turn 11: switch on Happy Hour now for turns 11-12? It can be used once per game. (y/n) > n
+
+=================================================================
+                          TURN 11 / 18
+=================================================================
+Turn 11 | Revenue $43.44 | Avg satisfaction (paid) 91.3 | Paid 3 | Happy Hour available
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: (free)
+  Table 2: C4 (Critic)    sat  88  ORDERED      order #4 Burger + Pasta Combo PREPARING
+Orders:
+  #4 Burger + Pasta Combo for C4 (Critic)    PREPARING 1/3 units  bill $29.70
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #4 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 0
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 1
+  Order number to cook > 4
+  * Chef worked on order #4 Burger + Pasta Combo for C4 (unit 2 of 3).
+
+--- Eating, payment and waiting ---
+
+End of turn 11: served 3 | unhappy departures 0 | revenue $43.44 | avg satisfaction 91.3 | turns used 11/18
+Satisfaction now: C4=76
+Start of turn 12: switch on Happy Hour now for turns 12-13? It can be used once per game. (y/n) > n
+
+=================================================================
+                          TURN 12 / 18
+=================================================================
+Turn 12 | Revenue $43.44 | Avg satisfaction (paid) 91.3 | Paid 3 | Happy Hour available
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: (free)
+  Table 2: C4 (Critic)    sat  76  ORDERED      order #4 Burger + Pasta Combo PREPARING
+Orders:
+  #4 Burger + Pasta Combo for C4 (Critic)    PREPARING 2/3 units  bill $29.70
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #4 (1 unit left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 0
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 1
+  Order number to cook > 4
+  * Chef finished order #4 Burger + Pasta Combo for C4 (unit 3 of 3). It is READY and can be served next turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 12: served 3 | unhappy departures 0 | revenue $43.44 | avg satisfaction 91.3 | turns used 12/18
+Satisfaction now: C4=64
+Start of turn 13: switch on Happy Hour now for turns 13-14? It can be used once per game. (y/n) > y
+
+=================================================================
+                          TURN 13 / 18
+=================================================================
+  * Happy Hour is ON for turns 13 and 14: 20% off new orders, waiting customers recover 15 each turn.
+  * Happy Hour: 1 waiting customer recovered 15 satisfaction (maximum 100).
+  * C5 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 13 | Revenue $43.44 | Avg satisfaction (paid) 91.3 | Paid 3 | Happy Hour ON (2 turns left incl. this one)
+
+Waiting queue:
+  C5 (Regular)   sat 100  WAITING      arrived turn 13
+Tables:
+  Table 1: (free)
+  Table 2: C4 (Critic)    sat  79  ORDERED      order #4 Burger + Pasta Combo READY
+Orders:
+  #4 Burger + Pasta Combo for C4 (Critic)    READY     3/3 units  bill $29.70
+Staff tasks available:
+  Host   : seat one queued customer (before the Waiter acts)
+  Waiter : seat C5 | serve #4
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 1
+  Customer number to seat (e.g. 2 for C2) > 5
+  Table number > 1
+  * Host seated C5 (Regular) at Table 1.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 2
+  Table number to take the order from > 1
+  * Waiter took order #5: C5 (Regular) ordered Salad + Pasta Combo (3 prep units) for $19.44 (menu price $24.30, Happy Hour applied).
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 1
+  Order number to cook > 5
+  * Chef worked on order #5 Salad + Pasta Combo for C5 (unit 1 of 3).
+
+--- Eating, payment and waiting ---
+
+End of turn 13: served 3 | unhappy departures 0 | revenue $43.44 | avg satisfaction 91.3 | turns used 13/18
+Satisfaction now: C4=67 C5=92
+
+=================================================================
+                          TURN 14 / 18
+=================================================================
+  * Happy Hour: 2 waiting customers recovered 15 satisfaction (maximum 100).
+Turn 14 | Revenue $43.44 | Avg satisfaction (paid) 91.3 | Paid 3 | Happy Hour ON (1 turn left incl. this one)
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: C5 (Regular)   sat 100  ORDERED      order #5 Salad + Pasta Combo PREPARING
+  Table 2: C4 (Critic)    sat  82  ORDERED      order #4 Burger + Pasta Combo READY
+Orders:
+  #4 Burger + Pasta Combo for C4 (Critic)    READY     3/3 units  bill $29.70
+  #5 Salad + Pasta Combo for C5 (Regular)   PREPARING 1/3 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : serve #4
+  Chef   : cook #5 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 3
+  Order number to serve > 4
+  * Waiter served order #4 Burger + Pasta Combo for C4. C4 (Critic) is now eating (satisfaction 82 -> 72 (reaction to service)).
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 1
+  Order number to cook > 5
+  * Chef worked on order #5 Salad + Pasta Combo for C5 (unit 2 of 3).
+
+--- Eating, payment and waiting ---
+
+End of turn 14: served 4 | unhappy departures 0 | revenue $43.44 | avg satisfaction 91.3 | turns used 14/18
+Satisfaction now: C4=72 C5=92
+
+=================================================================
+                          TURN 15 / 18
+=================================================================
+Turn 15 | Revenue $43.44 | Avg satisfaction (paid) 91.3 | Paid 3 | Happy Hour used
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: C5 (Regular)   sat  92  ORDERED      order #5 Salad + Pasta Combo PREPARING
+  Table 2: C4 (Critic)    sat  72  EATING       order #4 Burger + Pasta Combo SERVED
+Orders:
+  #4 Burger + Pasta Combo for C4 (Critic)    SERVED    3/3 units  bill $29.70
+  #5 Salad + Pasta Combo for C5 (Regular)   PREPARING 2/3 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #5 (1 unit left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 0
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 1
+  Order number to cook > 5
+  * Chef finished order #5 Salad + Pasta Combo for C5 (unit 3 of 3). It is READY and can be served next turn.
+
+--- Eating, payment and waiting ---
+  * C4 (Critic) finished eating and is READY_TO_PAY (pays next turn at the earliest).
+
+End of turn 15: served 4 | unhappy departures 0 | revenue $43.44 | avg satisfaction 91.3 | turns used 15/18
+Satisfaction now: C4=72 C5=84
+
+=================================================================
+                          TURN 16 / 18
+=================================================================
+  * C6 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 16 | Revenue $43.44 | Avg satisfaction (paid) 91.3 | Paid 3 | Happy Hour used
+
+Waiting queue:
+  C6 (Regular)   sat 100  WAITING      arrived turn 16
+Tables:
+  Table 1: C5 (Regular)   sat  84  ORDERED      order #5 Salad + Pasta Combo READY
+  Table 2: C4 (Critic)    sat  72  READY_TO_PAY order #4 Burger + Pasta Combo SERVED
+Orders:
+  #4 Burger + Pasta Combo for C4 (Critic)    SERVED    3/3 units  bill $29.70
+  #5 Salad + Pasta Combo for C5 (Regular)   READY     3/3 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : serve #5
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 1
+  Customer number to seat (e.g. 2 for C2) > 6
+  Table number > 2
+  ! Not allowed: Table 2 is occupied by C4 (Critic).
+  ! Please choose again.
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 3
+  Order number to serve > 5
+  * Waiter served order #5 Salad + Pasta Combo for C5. C5 (Regular) is now eating (satisfaction 84).
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 0
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+  * Cashier collected $29.70 from C4 (Critic). Satisfaction 72 recorded; table freed.
+
+End of turn 16: served 5 | unhappy departures 0 | revenue $73.14 | avg satisfaction 86.5 | turns used 16/18
+Satisfaction now: C5=84 C6=92
+
+=================================================================
+                          TURN 17 / 18
+=================================================================
+Turn 17 | Revenue $73.14 | Avg satisfaction (paid) 86.5 | Paid 4 | Happy Hour used
+
+Waiting queue:
+  C6 (Regular)   sat  92  WAITING      arrived turn 16
+Tables:
+  Table 1: C5 (Regular)   sat  84  EATING       order #5 Salad + Pasta Combo SERVED
+  Table 2: (free)
+Orders:
+  #5 Salad + Pasta Combo for C5 (Regular)   SERVED    3/3 units  bill $19.44
+Staff tasks available:
+  Host   : seat one queued customer (before the Waiter acts)
+  Waiter : seat C6
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 1
+  Customer number to seat (e.g. 2 for C2) > 6
+  Table number > 2
+  * Host seated C6 (Regular) at Table 2.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 2
+  Table number to take the order from > 2
+  * Waiter took order #6: C6 (Regular) ordered Burger + Pasta Combo (3 prep units) for $29.70.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 1
+  Order number to cook > 6
+  * Chef worked on order #6 Burger + Pasta Combo for C6 (unit 1 of 3).
+
+--- Eating, payment and waiting ---
+  * C5 (Regular) finished eating and is READY_TO_PAY (pays next turn at the earliest).
+
+End of turn 17: served 5 | unhappy departures 0 | revenue $73.14 | avg satisfaction 86.5 | turns used 17/18
+Satisfaction now: C5=84 C6=84
+
+=================================================================
+                          TURN 18 / 18
+=================================================================
+Turn 18 | Revenue $73.14 | Avg satisfaction (paid) 86.5 | Paid 4 | Happy Hour used
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: C5 (Regular)   sat  84  READY_TO_PAY order #5 Salad + Pasta Combo SERVED
+  Table 2: C6 (Regular)   sat  84  ORDERED      order #6 Burger + Pasta Combo PREPARING
+Orders:
+  #5 Salad + Pasta Combo for C5 (Regular)   SERVED    3/3 units  bill $19.44
+  #6 Burger + Pasta Combo for C6 (Regular)   PREPARING 1/3 units  bill $29.70
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #6 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 0
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 1
+  Order number to cook > 6
+  * Chef worked on order #6 Burger + Pasta Combo for C6 (unit 2 of 3).
+
+--- Eating, payment and waiting ---
+  * Cashier collected $19.44 from C5 (Regular). Satisfaction 84 recorded; table freed.
+
+End of turn 18: served 5 | unhappy departures 0 | revenue $92.58 | avg satisfaction 86.0 | turns used 18/18
+Satisfaction now: C6=76
+
+=================================================================
+                         *** VICTORY ***
+=================================================================
+[MET]    Paid customers: 5 (target 4)
+[MET]    Revenue: $92.58 (target $45.00)
+[MET]    Average satisfaction: 86.0 (target 60)
+Dishes served: 5 | Unhappy departures: 0 | Turns used: 18/18

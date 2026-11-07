@@ -1,0 +1,702 @@
+=================================================================
+                 RESTAURANT RUSH - Manager's Shift
+=================================================================
+You manage a small restaurant for 18 turns with 2 tables, one Host, one Waiter, one Chef and one Cashier.
+Customers: Regular (loses 8 per waiting turn), VIP (loses 5, 10% off),
+           Critic (loses 12, orders the priciest item, +10 if served on time, else -10).
+Happy Hour (once per game, 2 turns): 20% off new orders, waiting customers recover 15 per turn.
+Customers choose their own food. You decide what your staff do each turn.
+
+Menu:
+  - Salad ($9.00, 1 unit)
+  - Burger ($15.00, 1 unit)
+  - Pasta ($18.00, 2 units)
+  - Salad + Burger Combo ($21.60, 2 units)
+  - Salad + Pasta Combo ($24.30, 3 units)
+  - Burger + Pasta Combo ($29.70, 3 units)
+
+Objective after turn 18: at least 4 paid customers, revenue at least $45.00, average satisfaction of paid customers at least 60.
+Seed: 2003
+Start of turn 1: switch on Happy Hour now for turns 1-2? It can be used once per game. (y/n) > y
+
+=================================================================
+                           TURN 1 / 18
+=================================================================
+  * Happy Hour is ON for turns 1 and 2: 20% off new orders, waiting customers recover 15 each turn.
+  * C1 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 1 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour ON (2 turns left incl. this one)
+
+Waiting queue:
+  C1 (Regular)   sat 100  WAITING      arrived turn 1
+Tables:
+  Table 1: (free)
+  Table 2: (free)
+Orders:
+  (none in progress)
+Staff tasks available:
+  Host   : seat one queued customer (before the Waiter acts)
+  Waiter : seat C1
+  Chef   : nothing to cook yet (orders taken this turn can still be cooked)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 1
+  Customer number to seat (e.g. 2 for C2) > 1
+  Table number > 1
+  * Host seated C1 (Regular) at Table 1.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 2
+  Table number to take the order from > 1
+  * Waiter took order #1: C1 (Regular) ordered Burger (1 prep unit) for $12.00 (menu price $15.00, Happy Hour applied).
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 0
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 1: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 1/18
+Satisfaction now: C1=92
+
+=================================================================
+                           TURN 2 / 18
+=================================================================
+  * Happy Hour: 1 waiting customer recovered 15 satisfaction (maximum 100).
+Turn 2 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour ON (1 turn left incl. this one)
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: C1 (Regular)   sat 100  ORDERED      order #1 Burger PREPARING
+  Table 2: (free)
+Orders:
+  #1 Burger     for C1 (Regular)   PREPARING 0/1 units  bill $12.00
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #1 (1 unit left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 0
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 0
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 2: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 2/18
+Satisfaction now: C1=92
+
+=================================================================
+                           TURN 3 / 18
+=================================================================
+Turn 3 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: C1 (Regular)   sat  92  ORDERED      order #1 Burger PREPARING
+  Table 2: (free)
+Orders:
+  #1 Burger     for C1 (Regular)   PREPARING 0/1 units  bill $12.00
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #1 (1 unit left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 0
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 0
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 0
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 3: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 3/18
+Satisfaction now: C1=84
+
+=================================================================
+                           TURN 4 / 18
+=================================================================
+  * C2 (VIP) arrived and joined the waiting queue (satisfaction 100).
+Turn 4 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  C2 (VIP)       sat 100  WAITING      arrived turn 4
+Tables:
+  Table 1: C1 (Regular)   sat  84  ORDERED      order #1 Burger PREPARING
+  Table 2: (free)
+Orders:
+  #1 Burger     for C1 (Regular)   PREPARING 0/1 units  bill $12.00
+Staff tasks available:
+  Host   : seat one queued customer (before the Waiter acts)
+  Waiter : seat C2
+  Chef   : cook #1 (1 unit left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > 1
+  Customer number to seat (e.g. 2 for C2) > 2
+  Table number > 2
+  * Host seated C2 (VIP) at Table 2.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > 2
+  Table number to take the order from > 2
+  * Waiter took order #2: C2 (VIP) ordered Salad + Burger Combo (2 prep units) for $19.44 (menu price $21.60).
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > 0
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 4: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 4/18
+Satisfaction now: C1=76 C2=95
+
+=================================================================
+                           TURN 5 / 18
+=================================================================
+Turn 5 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: C1 (Regular)   sat  76  ORDERED      order #1 Burger PREPARING
+  Table 2: C2 (VIP)       sat  95  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #1 Burger     for C1 (Regular)   PREPARING 0/1 units  bill $12.00
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #1 (1 unit left) | cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 5: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 5/18
+Satisfaction now: C1=68 C2=90
+
+=================================================================
+                           TURN 6 / 18
+=================================================================
+Turn 6 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  (empty)
+Tables:
+  Table 1: C1 (Regular)   sat  68  ORDERED      order #1 Burger PREPARING
+  Table 2: C2 (VIP)       sat  90  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #1 Burger     for C1 (Regular)   PREPARING 0/1 units  bill $12.00
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #1 (1 unit left) | cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 6: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 6/18
+Satisfaction now: C1=60 C2=85
+
+=================================================================
+                           TURN 7 / 18
+=================================================================
+  * C3 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 7 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  C3 (Regular)   sat 100  WAITING      arrived turn 7
+Tables:
+  Table 1: C1 (Regular)   sat  60  ORDERED      order #1 Burger PREPARING
+  Table 2: C2 (VIP)       sat  85  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #1 Burger     for C1 (Regular)   PREPARING 0/1 units  bill $12.00
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #1 (1 unit left) | cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 7: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 7/18
+Satisfaction now: C1=52 C2=80 C3=92
+
+=================================================================
+                           TURN 8 / 18
+=================================================================
+Turn 8 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  C3 (Regular)   sat  92  WAITING      arrived turn 7
+Tables:
+  Table 1: C1 (Regular)   sat  52  ORDERED      order #1 Burger PREPARING
+  Table 2: C2 (VIP)       sat  80  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #1 Burger     for C1 (Regular)   PREPARING 0/1 units  bill $12.00
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #1 (1 unit left) | cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 8: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 8/18
+Satisfaction now: C1=44 C2=75 C3=84
+
+=================================================================
+                           TURN 9 / 18
+=================================================================
+Turn 9 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  C3 (Regular)   sat  84  WAITING      arrived turn 7
+Tables:
+  Table 1: C1 (Regular)   sat  44  ORDERED      order #1 Burger PREPARING
+  Table 2: C2 (VIP)       sat  75  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #1 Burger     for C1 (Regular)   PREPARING 0/1 units  bill $12.00
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #1 (1 unit left) | cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 9: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 9/18
+Satisfaction now: C1=36 C2=70 C3=76
+
+=================================================================
+                          TURN 10 / 18
+=================================================================
+  * C4 (Critic) arrived and joined the waiting queue (satisfaction 100).
+Turn 10 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  C3 (Regular)   sat  76  WAITING      arrived turn 7
+  C4 (Critic)    sat 100  WAITING      arrived turn 10
+Tables:
+  Table 1: C1 (Regular)   sat  36  ORDERED      order #1 Burger PREPARING
+  Table 2: C2 (VIP)       sat  70  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #1 Burger     for C1 (Regular)   PREPARING 0/1 units  bill $12.00
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #1 (1 unit left) | cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 10: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 10/18
+Satisfaction now: C1=28 C2=65 C3=68 C4=88
+
+=================================================================
+                          TURN 11 / 18
+=================================================================
+Turn 11 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  C3 (Regular)   sat  68  WAITING      arrived turn 7
+  C4 (Critic)    sat  88  WAITING      arrived turn 10
+Tables:
+  Table 1: C1 (Regular)   sat  28  ORDERED      order #1 Burger PREPARING
+  Table 2: C2 (VIP)       sat  65  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #1 Burger     for C1 (Regular)   PREPARING 0/1 units  bill $12.00
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #1 (1 unit left) | cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 11: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 11/18
+Satisfaction now: C1=20 C2=60 C3=60 C4=76
+
+=================================================================
+                          TURN 12 / 18
+=================================================================
+Turn 12 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  C3 (Regular)   sat  60  WAITING      arrived turn 7
+  C4 (Critic)    sat  76  WAITING      arrived turn 10
+Tables:
+  Table 1: C1 (Regular)   sat  20  ORDERED      order #1 Burger PREPARING
+  Table 2: C2 (VIP)       sat  60  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #1 Burger     for C1 (Regular)   PREPARING 0/1 units  bill $12.00
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #1 (1 unit left) | cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 12: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 12/18
+Satisfaction now: C1=12 C2=55 C3=52 C4=64
+
+=================================================================
+                          TURN 13 / 18
+=================================================================
+  * C5 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 13 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  C3 (Regular)   sat  52  WAITING      arrived turn 7
+  C4 (Critic)    sat  64  WAITING      arrived turn 10
+  C5 (Regular)   sat 100  WAITING      arrived turn 13
+Tables:
+  Table 1: C1 (Regular)   sat  12  ORDERED      order #1 Burger PREPARING
+  Table 2: C2 (VIP)       sat  55  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #1 Burger     for C1 (Regular)   PREPARING 0/1 units  bill $12.00
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #1 (1 unit left) | cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 13: served 0 | unhappy departures 0 | revenue $0.00 | avg satisfaction N/A | turns used 13/18
+Satisfaction now: C1=4 C2=50 C3=44 C4=52 C5=92
+
+=================================================================
+                          TURN 14 / 18
+=================================================================
+Turn 14 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  C3 (Regular)   sat  44  WAITING      arrived turn 7
+  C4 (Critic)    sat  52  WAITING      arrived turn 10
+  C5 (Regular)   sat  92  WAITING      arrived turn 13
+Tables:
+  Table 1: C1 (Regular)   sat   4  ORDERED      order #1 Burger PREPARING
+  Table 2: C2 (VIP)       sat  50  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #1 Burger     for C1 (Regular)   PREPARING 0/1 units  bill $12.00
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : nothing to do (wait)
+  Waiter : nothing to do (wait)
+  Chef   : cook #1 (1 unit left) | cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+  * C1 (Regular) lost all patience and left without paying.
+
+End of turn 14: served 0 | unhappy departures 1 | revenue $0.00 | avg satisfaction N/A | turns used 14/18
+Satisfaction now: C2=45 C3=36 C4=40 C5=84
+
+=================================================================
+                          TURN 15 / 18
+=================================================================
+Turn 15 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  C3 (Regular)   sat  36  WAITING      arrived turn 7
+  C4 (Critic)    sat  40  WAITING      arrived turn 10
+  C5 (Regular)   sat  84  WAITING      arrived turn 13
+Tables:
+  Table 1: (free)
+  Table 2: C2 (VIP)       sat  45  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : seat one queued customer (before the Waiter acts)
+  Waiter : seat C3 | seat C4 | seat C5
+  Chef   : cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 15: served 0 | unhappy departures 1 | revenue $0.00 | avg satisfaction N/A | turns used 15/18
+Satisfaction now: C2=40 C3=28 C4=28 C5=76
+
+=================================================================
+                          TURN 16 / 18
+=================================================================
+  * C6 (Regular) arrived and joined the waiting queue (satisfaction 100).
+Turn 16 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  C3 (Regular)   sat  28  WAITING      arrived turn 7
+  C4 (Critic)    sat  28  WAITING      arrived turn 10
+  C5 (Regular)   sat  76  WAITING      arrived turn 13
+  C6 (Regular)   sat 100  WAITING      arrived turn 16
+Tables:
+  Table 1: (free)
+  Table 2: C2 (VIP)       sat  40  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : seat one queued customer (before the Waiter acts)
+  Waiter : seat C3 | seat C4 | seat C5 | seat C6
+  Chef   : cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 16: served 0 | unhappy departures 1 | revenue $0.00 | avg satisfaction N/A | turns used 16/18
+Satisfaction now: C2=35 C3=20 C4=16 C5=68 C6=92
+
+=================================================================
+                          TURN 17 / 18
+=================================================================
+Turn 17 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  C3 (Regular)   sat  20  WAITING      arrived turn 7
+  C4 (Critic)    sat  16  WAITING      arrived turn 10
+  C5 (Regular)   sat  68  WAITING      arrived turn 13
+  C6 (Regular)   sat  92  WAITING      arrived turn 16
+Tables:
+  Table 1: (free)
+  Table 2: C2 (VIP)       sat  35  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : seat one queued customer (before the Waiter acts)
+  Waiter : seat C3 | seat C4 | seat C5 | seat C6
+  Chef   : cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+
+End of turn 17: served 0 | unhappy departures 1 | revenue $0.00 | avg satisfaction N/A | turns used 17/18
+Satisfaction now: C2=30 C3=12 C4=4 C5=60 C6=84
+
+=================================================================
+                          TURN 18 / 18
+=================================================================
+Turn 18 | Revenue $0.00 | Avg satisfaction (paid) N/A | Paid 0 | Happy Hour used
+
+Waiting queue:
+  C3 (Regular)   sat  12  WAITING      arrived turn 7
+  C4 (Critic)    sat   4  WAITING      arrived turn 10
+  C5 (Regular)   sat  60  WAITING      arrived turn 13
+  C6 (Regular)   sat  84  WAITING      arrived turn 16
+Tables:
+  Table 1: (free)
+  Table 2: C2 (VIP)       sat  30  ORDERED      order #2 Salad + Burger Combo PREPARING
+Orders:
+  #2 Salad + Burger Combo for C2 (VIP)       PREPARING 0/2 units  bill $19.44
+Staff tasks available:
+  Host   : seat one queued customer (before the Waiter acts)
+  Waiter : seat C3 | seat C4 | seat C5 | seat C6
+  Chef   : cook #2 (2 units left)
+  Cashier: automatic, oldest READY_TO_PAY customer first
+
+--- Host (seats at most one customer) ---
+Host: 1) Seat a customer  0) Wait > [no more input: using the default]
+  The Host waits this turn.
+
+--- Waiter (one task) ---
+Waiter: 1) Seat a customer  2) Take an order  3) Serve a READY order  0) Wait > [no more input: using the default]
+  The Waiter waits this turn.
+
+--- Chef (one preparation unit) ---
+Chef: 1) Cook one unit of an order  0) Wait > [no more input: using the default]
+  The Chef waits this turn.
+
+--- Eating, payment and waiting ---
+  * C4 (Critic) lost all patience and left without paying.
+
+End of turn 18: served 0 | unhappy departures 2 | revenue $0.00 | avg satisfaction N/A | turns used 18/18
+Satisfaction now: C2=25 C3=4 C5=52 C6=76
+
+=================================================================
+                         *** DEFEAT ***
+=================================================================
+[MISSED] Paid customers: 0 (target 4)
+[MISSED] Revenue: $0.00 (target $45.00)
+[MISSED] Average satisfaction: N/A (target 60)
+Dishes served: 0 | Unhappy departures: 2 | Turns used: 18/18

@@ -1,0 +1,90 @@
+# Stage 1 victory run (seed 2003). Run: java -cp out restaurantrush.Main --echo < runs/stage1-victory.txt
+# With seed 2003 the customers order: C1 Burger, C2 Salad, C3 Salad, C4 Salad, C5 Burger, C6 Pasta.
+# Plan: seat each customer on arrival, take the order next turn while the Chef cooks it, serve the turn after.
+# Turn 1: Waiter seats C1 at Table 1; Chef waits
+1
+1
+1
+0
+# Turn 2: Waiter takes order at Table 1; Chef cooks order 1
+2
+1
+1
+1
+# Turn 3: a typing mistake and an invalid order number are rejected, then serve order 1
+abc
+3
+9
+3
+1
+0
+# Turn 4: seat C2 at Table 2
+1
+2
+2
+0
+# Turn 5: take order at Table 2; cook order 2
+2
+2
+1
+2
+# Turn 6: serve order 2
+3
+2
+0
+# Turn 7: seat C3 at Table 1 (C1 paid on turn 5)
+1
+3
+1
+0
+# Turn 8: take order at Table 1; cook order 3
+2
+1
+1
+3
+# Turn 9: serve order 3
+3
+3
+0
+# Turn 10: seat C4 at Table 2
+1
+4
+2
+0
+# Turn 11: take order at Table 2; cook order 4
+2
+2
+1
+4
+# Turn 12: serve order 4
+3
+4
+0
+# Turn 13: seat C5 at Table 1
+1
+5
+1
+0
+# Turn 14: take order at Table 1; cook order 5
+2
+1
+1
+5
+# Turn 15: serve order 5
+3
+5
+0
+# Turn 16: seat C6 at Table 2
+1
+6
+2
+0
+# Turn 17: take order at Table 2; cook order 6 (Pasta, unit 1)
+2
+2
+1
+6
+# Turn 18: Waiter waits; cook order 6 (unit 2). C6 cannot pay before the game ends.
+0
+1
+6

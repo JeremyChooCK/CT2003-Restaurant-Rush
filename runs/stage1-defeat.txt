@@ -1,0 +1,17 @@
+# Stage 1 defeat run (seed 2003). Run: java -cp out restaurantrush.Main --echo < runs/stage1-defeat.txt
+# The manager looks after C1 only, then lets the Waiter and Chef wait for the rest of the shift.
+# Turn 1: seat C1 at Table 1
+1
+1
+1
+0
+# Turn 2: take order at Table 1; cook order 1
+2
+1
+1
+1
+# Turn 3: serve order 1
+3
+1
+0
+# Turns 4-18: everyone waits (the script ends, so every remaining choice defaults to 0 = Wait).
