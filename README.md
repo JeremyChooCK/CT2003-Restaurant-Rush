@@ -1,41 +1,55 @@
 # Restaurant Rush
 
-A turn-based restaurant management game for the command line, written in Java for CT2003.
-You are the manager: each turn you decide what the Host, Waiter and Chef do, while customers
-lose patience as they wait. After 18 turns you win if at least 4 customers paid, revenue is at
-least $45.00 and the average satisfaction of paid customers is at least 60.
+Restaurant Rush is a turn-based Java restaurant management game for CT2003. Manage two tables over
+18 turns. To win, at least four customers must pay, revenue must reach $45.00, and the average
+satisfaction of paying customers must reach 60.
 
-**Repository:** `https://github.com/<OWNER>/<REPO>` *(replace with your group's URL after pushing)*
+[Repository](https://github.com/JeremyChooCK/CT2003-Restaurant-Rush) · [Pixel-art branch](https://github.com/JeremyChooCK/CT2003-Restaurant-Rush/tree/pixel-art-gui)
 
 ## Build and run
 
-Needs JDK 17 or newer. No other libraries and no network access are required.
+Use a JDK 17 or newer with both `java` and `javac` on your PATH. Run the commands from the project root.
+The game works offline and uses the standard Java libraries, including Swing for the graphical mode.
 
-| | Windows | macOS / Linux / Git Bash |
+| Task | Windows PowerShell | macOS / Linux / Git Bash |
 |---|---|---|
-| Build | `build.bat` | `./build.sh` |
-| Play | `run.bat` | `./run.sh` |
-| Rule checks (40 automated checks) | `test.bat` | `./test.sh` |
+| Build | `.\build.bat` | `./build.sh` |
+| Play in the pixel-art window | `.\run.bat --gui` | `./run.sh --gui` |
+| Play in the terminal | `.\run.bat` | `./run.sh` |
+| Run automated rule checks | `.\test.bat` | `./test.sh` |
 
-Or by hand from the project folder:
+After opening the graphical game, click **Start turn** and use the staff action buttons. The Waiter
+carries new tickets to the Chef. The **ORDER** box shows tickets awaiting prep and **PICKUP** shows
+finished dishes. When you choose **Serve**, the Waiter carries the dish from the counter to the table.
+The sprites and restaurant tiles are in [assets/img](assets/img).
 
+Use `--seed N` to change the seed that determines customers' food choices (default `2003`). In terminal
+mode, `--echo` prints each answer supplied by a replay file.
+
+### Presentation and replays
+
+- [Current PowerPoint and embedded speaker notes](docs/presentation/RestaurantRush_Presentation.pptx).
+  Slide 6 maps classes to methods. Slide 7 shows the graphical launch.
+- [Stage 1 saved run](runs/stage1-victory-output.txt) and [Stage 2 saved run](runs/stage2-victory-output.txt)
+  support the earlier-stage examples in the deck.
+- [Stage 3 victory](runs/stage3-victory-output.txt) and [Stage 3 defeat](runs/stage3-defeat-output.txt)
+  show the two outcomes from the current build. Turn 13 of the victory run shows the Happy Hour choice.
+
+To replay the current Stage 3 build after compiling, use one of these commands. Substitute
+`stage3-defeat.txt` for the defeat run.
+
+**Windows PowerShell**
+
+```powershell
+Get-Content runs/stage3-victory.txt | .\run.bat --echo
 ```
-javac --release 17 -d out $(find src -name "*.java")
-java -cp out restaurantrush.Main
+
+**macOS / Linux / Git Bash**
+
+```sh
+./run.sh --echo < runs/stage3-victory.txt
 ```
 
-For the pixel-art window, run `.\run.bat --gui` in PowerShell or `./run.sh --gui` on macOS/Linux after building. Click **Start turn** and choose each staff action in the sidebar. The sprites and room tiles load from `assets/img/`.
-
-Options: `--seed N` changes the seed that decides what customers order (default `2003`);
-`--echo` prints each answer read from a redirected script, so transcripts are readable.
-
-Replay a recorded run (each stage has a victory and a defeat script in `runs/`):
-
-```
-java -cp out restaurantrush.Main --echo < runs/stage3-victory.txt
-```
-
-To play an earlier stage, check out its tag and build again: `git checkout stage-1`.
 
 ## How to play
 
@@ -95,20 +109,17 @@ left). Orders taken during it get 20% off, after any VIP discount (a VIP Burger 
 $15 × 0.9 × 0.8 = $10.80). The price is locked when the order is taken. At the start of each
 active turn, customers still waiting for a table or food recover 15 satisfaction (maximum 100).
 
-## Stages and tags
+## Stage design
 
-| Tag | Stage | Adds |
+| Planned tag | Stage | Adds |
 |---|---|---|
 | `stage-1` | Basic restaurant operation | Regular customers, menu, Waiter, Chef, Cashier, full turn sequence, victory and defeat |
 | `stage-2` | Customer behaviour | `VIPCustomer`, `CriticCustomer` |
 | `stage-3` | New role and menu policy | `Host`, `ComboMeal`, Happy Hour (`HappyHour`, `PriceModifier`) |
 
-Each tag is a runnable commit with its own class diagram in `docs/uml/` and its own
-reproducible runs in `runs/`.
+The three stage tags are pending publication. The tables below document the design changes. The saved earlier-stage diagrams and transcripts are in [docs/uml](docs/uml) and [runs](runs).
 
 ### Stage 1 → Stage 2
-
-Compare: `https://github.com/<OWNER>/<REPO>/compare/stage-1...stage-2`
 
 | Change | Files | Reason |
 |---|---|---|
@@ -123,8 +134,6 @@ Compare: `https://github.com/<OWNER>/<REPO>/compare/stage-1...stage-2`
 modified: the Stage 1 design was already open for new customer types.
 
 ### Stage 2 → Stage 3
-
-Compare: `https://github.com/<OWNER>/<REPO>/compare/stage-2...stage-3`
 
 | Change | Files | Reason |
 |---|---|---|
@@ -147,18 +156,20 @@ were not modified.
 
 | Path | Contents |
 |---|---|
-| `src/restaurantrush/boundary` | Console input and output only |
+| `src/restaurantrush/boundary` | Terminal input and output, graphical controls and animation |
 | `src/restaurantrush/control` | Turn loop, game rules, scenario setup, pricing, scoring |
 | `src/restaurantrush/entity` | Restaurant, customers, orders, menu, staff |
 | `test/` | Offline rule checks (no test library needed) |
-| `runs/` | Reproducible victory and defeat scripts for every stage, with their output |
+| `runs/` | Stage 3 replay scripts and saved evidence for all three stages |
 | `docs/uml/` | Class diagram for each stage (SVG and PNG) and the script that draws them |
 | `docs/report/` | PDF report and its source |
+| `docs/presentation/` | Current PowerPoint with speaker notes and original terminal-demo materials |
+| `assets/img/` | Pixel-art sprites, food icons and restaurant tiles |
 
 ## Additional features
 
 * Scripted, reproducible runs: any input file can be redirected into the game; comment lines
   starting with `#` are skipped, and if the script ends every remaining choice is "Wait".
 * `--seed` to try different customer orders, and `--echo` for readable transcripts.
-* 40 offline rule checks (`test.sh` / `test.bat`), including the brief's Section 3.3 example.
+* Offline rule checks (`test.sh` / `test.bat`), including the brief's Section 3.3 example.
 * The Critic's reaction to service speed, and a live list of useful staff tasks each turn.
