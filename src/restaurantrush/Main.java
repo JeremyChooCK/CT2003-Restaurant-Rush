@@ -2,6 +2,7 @@ package restaurantrush;
 
 import restaurantrush.boundary.ConsoleInput;
 import restaurantrush.boundary.ConsoleView;
+import restaurantrush.boundary.PixelGame;
 import restaurantrush.control.Game;
 import restaurantrush.control.GameController;
 import restaurantrush.control.Scenario;
@@ -26,8 +27,11 @@ public final class Main {
     public static void main(String[] args) {
         long seed = Scenario.DEFAULT_SEED;
         boolean echo = false;
+        boolean gui = false;
         for (int i = 0; i < args.length; i++) {
-            if (args[i].equals("--echo")) {
+            if (args[i].equals("--gui")) {
+                gui = true;
+            } else if (args[i].equals("--echo")) {
                 echo = true;
             } else if (args[i].equals("--seed") && i + 1 < args.length) {
                 try {
@@ -36,8 +40,12 @@ public final class Main {
                     System.err.println("Ignoring invalid seed \"" + args[i] + "\"; using " + seed + ".");
                 }
             } else {
-                System.err.println("Unknown option \"" + args[i] + "\". Options: --seed N, --echo");
+                System.err.println("Unknown option \"" + args[i] + "\". Options: --seed N, --echo, --gui");
             }
+        }
+        if (gui) {
+            PixelGame.open(seed);
+            return;
         }
         Game game = new Game(new Scenario(seed));
         ConsoleView view = new ConsoleView(System.out);

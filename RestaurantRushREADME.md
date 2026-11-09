@@ -24,6 +24,8 @@ javac --release 17 -d out $(find src -name "*.java")
 java -cp out restaurantrush.Main
 ```
 
+For the pixel-art window, run `.\run.bat --gui` in PowerShell or `./run.sh --gui` on macOS/Linux after building. Click **Start turn** and choose each staff action in the sidebar. The sprites and room tiles load from `assets/img/`.
+
 Options: `--seed N` changes the seed that decides what customers order (default `2003`);
 `--echo` prints each answer read from a redirected script, so transcripts are readable.
 
