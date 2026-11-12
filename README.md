@@ -4,7 +4,7 @@ Restaurant Rush is a turn-based Java restaurant management game for CT2003. Mana
 18 turns. To win, at least four customers must pay, revenue must reach $45.00, and the average
 satisfaction of paying customers must reach 60.
 
-[Repository](https://github.com/JeremyChooCK/CT2003-Restaurant-Rush) · [Pixel-art branch](https://github.com/JeremyChooCK/CT2003-Restaurant-Rush/tree/pixel-art-gui)
+[Repository](https://github.com/JeremyChooCK/CT2003-Restaurant-Rush)
 
 ## Build and run
 
@@ -23,13 +23,32 @@ carries new tickets to the Chef. The **ORDER** box shows tickets awaiting prep a
 finished dishes. When you choose **Serve**, the Waiter carries the dish from the counter to the table.
 The sprites and restaurant tiles are in [assets/img](assets/img).
 
+The shift log also shows how much satisfaction each waiting customer lost that turn, and whether each
+served order was at full price or discounted from its menu price.
+
+**Demo jumps.** For live demonstrations, choose a point in the **Demo jump** menu at the top of the window
+and click **Jump**. Every jump starts a fresh game and replays the recorded run with seed `2003` up to that
+point, so you can go forwards or back at any time and always land on the same state:
+
+| Jump | What has been played | Used for |
+|---|---|---|
+| Turn 1: new game | Nothing | Launching the game; Stage 1 walkthrough |
+| Turn 4: VIP arrives | Turns 1–3 of the victory run | VIP discount and patience |
+| Turn 10: Critic arrives | Turns 1–9 of the victory run | Critic's order and reaction |
+| Turn 13: Happy Hour decision | Turns 1–12 of the victory run | The turn-13 choice |
+| End: victory | All 18 turns of [stage3-victory.txt](runs/stage3-victory.txt) | Victory result |
+| End: defeat | All 18 turns of [stage3-defeat.txt](runs/stage3-defeat.txt) | Defeat result |
+
+The jumps call the same public `Game` actions as the buttons, so the game rules are unchanged.
+
 Use `--seed N` to change the seed that determines customers' food choices (default `2003`). In terminal
 mode, `--echo` prints each answer supplied by a replay file.
 
 ### Presentation and replays
 
 - [Current PowerPoint and embedded speaker notes](docs/presentation/RestaurantRush_Presentation.pptx).
-  Slide 6 maps classes to methods. Slide 7 shows the graphical launch.
+  Slide 6 maps classes to methods. Slide 7 shows the graphical launch. Slide 15 is a live VIP and Critic
+  demo using the demo jumps to turns 4 and 10.
 - [Stage 1 saved run](runs/stage1-victory-output.txt) and [Stage 2 saved run](runs/stage2-victory-output.txt)
   support the earlier-stage examples in the deck.
 - [Stage 3 victory](runs/stage3-victory-output.txt) and [Stage 3 defeat](runs/stage3-defeat-output.txt)
@@ -173,3 +192,6 @@ were not modified.
 * `--seed` to try different customer orders, and `--echo` for readable transcripts.
 * Offline rule checks (`test.sh` / `test.bat`), including the brief's Section 3.3 example.
 * The Critic's reaction to service speed, and a live list of useful staff tasks each turn.
+* A pixel-art window (`--gui`) that drives the same `Game` as the terminal, with animated staff and
+  customers. Only boundary classes were added (`PixelGame`, `PixelRoom`, `DemoJump`); no rule changed.
+* Demo jumps in the pixel-art window, which replay the recorded runs to any key turn for presentations.

@@ -22,7 +22,14 @@ import restaurantrush.entity.Order;
 import restaurantrush.entity.OrderStatus;
 import restaurantrush.entity.Table;
 
-/** Paints the dining room from the current game state. */
+/**
+ * Paints the dining room from the current game state.
+ * <p>
+ * The room only reads the {@link Game}: customers walk to the queue or their
+ * table according to their status, and staff sprites walk short routes to
+ * animate the actions {@link PixelGame} has already applied. It never changes
+ * the game, so animations cannot affect the rules.
+ */
 final class PixelRoom extends JPanel {
     private static final int WIDTH = 300;
     private static final int HEIGHT = 232;
@@ -109,6 +116,11 @@ final class PixelRoom extends JPanel {
         int y() { return (int) Math.round(y); }
     }
 
+    /**
+     * Loads every sprite from {@code assets/img}.
+     *
+     * @throws IOException if a sprite is missing or unreadable
+     */
     PixelRoom() throws IOException {
         setPreferredSize(new Dimension(WIDTH * 2, HEIGHT * 2));
         setBackground(INK);
@@ -158,10 +170,22 @@ final class PixelRoom extends JPanel {
         repaint();
     }
 
+    /**
+     * Tells whether the Cashier is still walking to collect a payment.
+     *
+     * @return {@code true} while a payment is being animated
+     */
     boolean hasPendingPayment() {
         return paymentCustomer != null;
     }
 
+    /**
+     * Moves the sprites to match the game. A different {@code Game} object
+     * (a new game or a demo jump) clears every sprite and animation first.
+     *
+     * @param game            the game to draw
+     * @param onCashierReturn called when the Cashier returns from a payment
+     */
     void showGame(Game game, Runnable onCashierReturn) {
         if (this.game != game) {
             customers.clear();
@@ -231,6 +255,12 @@ final class PixelRoom extends JPanel {
         }
     }
 
+    /**
+     * Animates the Host or Waiter walking to a table to seat a customer.
+     *
+     * @param useHost     {@code true} for the Host, {@code false} for the Waiter
+     * @param tableNumber the table, starting at 1
+     */
     void staffVisitsTable(boolean useHost, int tableNumber) {
         Walker staff = useHost ? host : waiter;
         int x = tableX(tableNumber) + 60;
@@ -240,10 +270,22 @@ final class PixelRoom extends JPanel {
         staff.route.add(new Stop(staff.home));
     }
 
+    /**
+     * Tells whether the Waiter is still carrying a new order to the Chef.
+     *
+     * @return {@code true} while a ticket is being animated
+     */
     boolean hasPendingTicket() {
         return orderAwaitingHandoff != 0;
     }
 
+    /**
+     * Animates the Waiter taking an order ticket from a table to the Chef.
+     *
+     * @param order       the order just taken
+     * @param tableNumber the customer's table
+     * @param onHandoff   called when the ticket reaches the Chef
+     */
     void bringOrderToChef(Order order, int tableNumber, Runnable onHandoff) {
         orderAwaitingHandoff = order.getId();
         Point aisle = new Point(162, 61);
@@ -261,6 +303,11 @@ final class PixelRoom extends JPanel {
         waiter.route.add(new Stop(waiter.home));
     }
 
+    /**
+     * Tells whether a served dish is still being carried to its table.
+     *
+     * @return {@code true} while a delivery is being animated
+     */
     boolean hasPendingDelivery() {
         return !pendingDeliveries.isEmpty();
     }
@@ -271,6 +318,13 @@ final class PixelRoom extends JPanel {
         return pendingDeliveries.containsKey(order.getId()) ? "READY / PICKUP" : "";
     }
 
+    /**
+     * Animates the Waiter carrying a served dish from the pickup counter to a table.
+     *
+     * @param order       the order just served
+     * @param tableNumber the customer's table
+     * @param onDelivery  called when the dish reaches the table
+     */
     void deliverOrder(Order order, int tableNumber, Runnable onDelivery) {
         pendingDeliveries.put(order.getId(), order);
         Point aisle = new Point(162, 61);
@@ -287,6 +341,7 @@ final class PixelRoom extends JPanel {
         waiter.route.add(new Stop(waiter.home));
     }
 
+    /** Animates the Chef stepping to the stove for one preparation unit. */
     void chefCooks() {
         chef.walk(new Point(52, 12), new Point(49, 7), chef.home);
     }
@@ -295,6 +350,12 @@ final class PixelRoom extends JPanel {
         return 93 + (number - 1) * 102;
     }
 
+    /**
+     * Returns a loaded sprite as a Swing icon.
+     *
+     * @param name the sprite name, such as "burger"
+     * @return the icon
+     */
     Icon icon(String name) {
         return new ImageIcon(art.get(name));
     }
