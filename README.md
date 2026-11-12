@@ -130,15 +130,24 @@ active turn, customers still waiting for a table or food recover 15 satisfaction
 
 ## Stage design
 
-| Planned tag | Stage | Adds |
+| Tag | Stage | Adds |
 |---|---|---|
-| `stage-1` | Basic restaurant operation | Regular customers, menu, Waiter, Chef, Cashier, full turn sequence, victory and defeat |
-| `stage-2` | Customer behaviour | `VIPCustomer`, `CriticCustomer` |
-| `stage-3` | New role and menu policy | `Host`, `ComboMeal`, Happy Hour (`HappyHour`, `PriceModifier`) |
+| [`stage-1`](https://github.com/JeremyChooCK/CT2003-Restaurant-Rush/tree/stage-1) | Basic restaurant operation | Regular customers, menu, Waiter, Chef, Cashier, full turn sequence, victory and defeat |
+| [`stage-2`](https://github.com/JeremyChooCK/CT2003-Restaurant-Rush/tree/stage-2) | Customer behaviour | `VIPCustomer`, `CriticCustomer` |
+| [`stage-3`](https://github.com/JeremyChooCK/CT2003-Restaurant-Rush/tree/stage-3) | New role and menu policy | `Host`, `ComboMeal`, Happy Hour (`HappyHour`, `PriceModifier`) |
 
-The three stage tags are pending publication. The tables below document the design changes. The saved earlier-stage diagrams and transcripts are in [docs/uml](docs/uml) and [runs](runs).
+Each tag is a runnable commit. At each tag the code builds, passes the rule checks that existed at that
+stage (20, 27 and 40 checks), and reproduces that stage's victory and defeat runs in [runs](runs) exactly.
+To play an earlier stage, check out its tag and build again, for example `git checkout stage-1`, then
+`.\build.bat` and `.\run.bat`.
+
+The pixel-art window (`--gui`) was added after `stage-3` as an additional feature, so the tags contain
+only the console game. The class diagrams for each stage are in [docs/uml](docs/uml).
 
 ### Stage 1 → Stage 2
+
+Compare: [stage-1...stage-2](https://github.com/JeremyChooCK/CT2003-Restaurant-Rush/compare/stage-1...stage-2)
+(4 source files, +147 / −3 lines)
 
 | Change | Files | Reason |
 |---|---|---|
@@ -154,6 +163,9 @@ modified: the Stage 1 design was already open for new customer types.
 
 ### Stage 2 → Stage 3
 
+Compare: [stage-2...stage-3](https://github.com/JeremyChooCK/CT2003-Restaurant-Rush/compare/stage-2...stage-3)
+(9 source files, +384 / −10 lines)
+
 | Change | Files | Reason |
 |---|---|---|
 | New | `entity/Host.java` | A new `Staff` subclass that can only seat customers. |
@@ -161,7 +173,7 @@ modified: the Stage 1 design was already open for new customer types.
 | New | `control/PriceModifier.java`, `control/HappyHour.java` | Restaurant-wide pricing rules applied after customer discounts. Happy Hour also tracks its two turns and the +15 recovery. |
 | Changed | `control/Scenario.java` | Setup only: the menu now also offers the three combos. |
 | Changed | `control/PriceCalculator.java` | Holds a list of `PriceModifier`s and applies them after the customer discount. Future promotions need no further change here. |
-| Changed | `control/Game.java` | Owns the Host and Happy Hour. Adds `hostSeat()` and `activateHappyHour()`, applies the recovery at turn start and counts Happy Hour down at turn end. |
+| Changed | `control/Game.java` | Owns the Host and Happy Hour. Adds `hostSeat()` and `activateHappyHour()`, applies the recovery at turn start and counts Happy Hour down at turn end. The order message now shows the menu price when a discount applies. |
 | Changed | `control/GameController.java` | Asks about Happy Hour at the start of each turn while it is unused, and asks for the Host's task before the Waiter's. |
 | Changed | `boundary/ConsoleView.java` | Shows Happy Hour status with turns left, the Host's available task and the new rules in the welcome text. |
 | Changed | `test/restaurantrush/RuleChecks.java` | The Critic check no longer assumes Pasta, because the Burger + Pasta Combo is now the most expensive item. Added checks for combos, Happy Hour and the Host. |
