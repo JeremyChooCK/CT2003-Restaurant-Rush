@@ -125,10 +125,13 @@ public class Game {
     public void waiterServe(int orderId) throws InvalidActionException {
         Order order = restaurant.findOrder(orderId);
         Customer customer = order.getCustomer();
+        int before = customer.getSatisfaction();
         waiter.serve(order, currentTurn);
         stats.recordServed();
+        String change = before == customer.getSatisfaction() ? String.valueOf(before)
+                : before + " -> " + customer.getSatisfaction() + " (reaction to service)";
         events.add("Waiter served order " + order + ". " + customer.getLabel()
-                + " is now eating (satisfaction " + customer.getSatisfaction() + ").");
+                + " is now eating (satisfaction " + change + ").");
     }
 
     /**

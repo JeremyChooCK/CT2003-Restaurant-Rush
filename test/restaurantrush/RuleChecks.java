@@ -6,6 +6,7 @@ import java.util.function.IntFunction;
 import restaurantrush.control.Game;
 import restaurantrush.control.GameResult;
 import restaurantrush.control.Scenario;
+import restaurantrush.entity.CriticCustomer;
 import restaurantrush.entity.Customer;
 import restaurantrush.entity.CustomerStatus;
 import restaurantrush.entity.InvalidActionException;
@@ -14,6 +15,7 @@ import restaurantrush.entity.MenuItem;
 import restaurantrush.entity.Money;
 import restaurantrush.entity.OrderStatus;
 import restaurantrush.entity.RegularCustomer;
+import restaurantrush.entity.VIPCustomer;
 
 /**
  * Self-contained rule checks that need no test library, so they run offline.
@@ -40,6 +42,8 @@ public final class RuleChecks {
         dishFinishedThisTurnCannotBeServed();
         unhappyCustomerLeavesWithoutPaying();
         allWaitRunIsDefeat();
+        vipBehaviour();
+        criticBehaviour();
         System.out.println(failures == 0 ? "ALL CHECKS PASSED" : failures + " CHECK(S) FAILED");
         if (failures > 0) {
             System.exit(1);
@@ -154,6 +158,77 @@ public final class RuleChecks {
         }
         check("All-wait base game ends in DEFEAT after 18 turns",
                 game.getResult() == GameResult.DEFEAT && game.getCurrentTurn() == 18);
+    }
+
+    /** VIPs lose 5 per waiting turn and pay 90%. */
+    private static void vipBehaviour() throws InvalidActionException {
+        VIPCustomer vip = new VIPCustomer(1, 1, Scenario.DEFAULT_SEED);
+        check("VIP pays 90%: $18.00 becomes $16.20", vip.applyDiscount(Money.ofDollars(18)).equals(Money.ofCents(1620)));
+        vip.loseSatisfaction();
+        check("VIP loses 5 per waiting turn", vip.getSatisfaction() == 95);
+        Game game = new Game(new FixedArrivalScenario(id -> new VIPCustomer(id, 1, Scenario.DEFAULT_SEED)));
+        game.startTurn();
+        game.waiterSeat(1, 1);
+        endTurn(game);
+        game.startTurn();
+        game.waiterTakeOrder(1);
+        Money full = game.getRestaurant().getOrders().get(0).getItem().getPrice();
+        check("VIP order is locked at 90% of the menu price",
+                game.getRestaurant().getOrders().get(0).getPrice().equals(full.percent(90)));
+    }
+
+    /** Critics lose 12, order the most expensive dish and react to the speed of service. */
+    private static void criticBehaviour() throws InvalidActionException {
+        Menu menu = new Scenario(Scenario.DEFAULT_SEED).createMenu();
+        CriticCustomer critic = new CriticCustomer(1, 1, Scenario.DEFAULT_SEED);
+        MenuItem choice = critic.chooseItem(menu);
+        check("Critic orders the most expensive item (Pasta)",
+                choice == menu.mostExpensive() && choice.getName().equals("Pasta"));
+        critic.loseSatisfaction();
+        check("Critic loses 12 per waiting turn", critic.getSatisfaction() == 88);
+        int units = choice.getPrepUnits();
+
+        // Turn 1 seat, turn 2 order; the Chef cooks every turn from turn 2, so the dish
+        // is served on turn 2 + units, the earliest possible turn.
+        Game fast = criticGame();
+        fast.startTurn();
+        fast.waiterTakeOrder(1);
+        for (int i = 0; i < units; i++) {
+            if (i > 0) {
+                fast.startTurn();
+            }
+            fast.chefPrepare(1);
+            endTurn(fast);
+        }
+        fast.startTurn();
+        fast.waiterServe(1);
+        int expectedFast = 100 - 12 * (1 + units) + 10;
+        check("Critic served on time: +10 (satisfaction " + expectedFast + ")",
+                fast.getRestaurant().getCustomers().get(0).getSatisfaction() == expectedFast);
+
+        // Same, but the Chef waits on turn 2, so the dish is one turn late.
+        Game slow = criticGame();
+        slow.startTurn();
+        slow.waiterTakeOrder(1);
+        endTurn(slow);
+        for (int i = 0; i < units; i++) {
+            slow.startTurn();
+            slow.chefPrepare(1);
+            endTurn(slow);
+        }
+        slow.startTurn();
+        slow.waiterServe(1);
+        int expectedSlow = 100 - 12 * (2 + units) - 10;
+        check("Critic served one turn late: -10 (satisfaction " + expectedSlow + ")",
+                slow.getRestaurant().getCustomers().get(0).getSatisfaction() == expectedSlow);
+    }
+
+    private static Game criticGame() throws InvalidActionException {
+        Game game = new Game(new FixedArrivalScenario(id -> new CriticCustomer(id, 1, Scenario.DEFAULT_SEED)));
+        game.startTurn();                         // turn 1: seat
+        game.waiterSeat(1, 1);
+        endTurn(game);
+        return game;
     }
 
     private static void endTurn(Game game) {
