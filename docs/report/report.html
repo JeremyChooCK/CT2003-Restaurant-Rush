@@ -38,17 +38,17 @@
   <div class="sub">CT2003 Group Assignment Report &mdash; Java command-line turn-based restaurant management game</div>
   <table>
     <tr><th style="width:35%">Lab group</th><td class="fill">[e.g. FCS1]</td></tr>
-    <tr><th>Assignment group</th><td class="fill">[e.g. Grp1]</td></tr>
-    <tr><th>Repository</th><td class="fill">https://github.com/&lt;OWNER&gt;/&lt;REPO&gt;</td></tr>
+    <tr><th>Assignment group</th><td>Grp1</td></tr>
+    <tr><th>Repository</th><td>https://github.com/JeremyChooCK/CT2003-Restaurant-Rush</td></tr>
     <tr><th>Tags</th><td><code>stage-1</code>, <code>stage-2</code>, <code>stage-3</code> (all runnable)</td></tr>
   </table>
   <h3>Group members</h3>
   <table>
     <tr><th>Name</th><th>Matriculation no.</th><th>Main contribution</th></tr>
-    <tr><td class="fill">[Member 1]</td><td class="fill">[ ]</td><td class="fill">[e.g. entity model, Stage 1]</td></tr>
-    <tr><td class="fill">[Member 2]</td><td class="fill">[ ]</td><td class="fill">[e.g. turn rules and controller]</td></tr>
-    <tr><td class="fill">[Member 3]</td><td class="fill">[ ]</td><td class="fill">[e.g. Stage 2 customers, tests]</td></tr>
-    <tr><td class="fill">[Member 4]</td><td class="fill">[ ]</td><td class="fill">[e.g. Stage 3, UML and report]</td></tr>
+    <tr><td>Jeremy</td><td class="fill">[ ]</td><td class="fill">[e.g. entity model, Stage 1]</td></tr>
+    <tr><td>Yan Qing</td><td class="fill">[ ]</td><td class="fill">[e.g. turn rules and controller]</td></tr>
+    <tr><td>Chris</td><td class="fill">[ ]</td><td class="fill">[e.g. Stage 2 customers, tests]</td></tr>
+    <tr><td>Jun Siang</td><td class="fill">[ ]</td><td class="fill">[e.g. Stage 3, UML and report]</td></tr>
   </table>
   <h3>Contents</h3>
   <ol class="toc">
@@ -217,11 +217,13 @@ satisfaction, and a late customer may not pay before turn 18.</p>
 <h2>6. Evolution across the three stages (GitHub evidence)</h2>
 <p>Each stage is a separate tagged, runnable commit. Each stage's code builds, passes the rule checks that
 existed at that stage, and reproduces its own victory and defeat. We checked this by checking out each tag into a
-clean folder. The README lists the new and changed files for each transition with reasons and compare links.</p>
+clean folder. The README lists the new and changed files for each transition with reasons and compare links.
+The optional pixel-art window
+was added after the <code>stage-3</code> tag, so the tags contain only the console game.</p>
 <table>
   <tr><th style="width:14%">Transition</th><th style="width:28%">New source files</th><th>Changed source files (reason)</th></tr>
-  <tr><td>1 &rarr; 2</td><td><code>VIPCustomer</code>, <code>CriticCustomer</code></td><td><code>Scenario</code>: setup registers a VIP on turn 4 and a Critic on turn 10. <code>Game</code>: the serve message shows satisfaction before &rarr; after, so the Critic's reaction is visible (no rule change). <br><span class="small">Source diff: 4 files, +148 / &minus;3 lines.</span></td></tr>
-  <tr><td>2 &rarr; 3</td><td><code>Host</code>, <code>ComboMeal</code>, <code>PriceModifier</code>, <code>HappyHour</code></td><td><code>Scenario</code>: adds three combos to the menu. <code>PriceCalculator</code>: applies a list of modifiers. <code>Game</code>: Host action, Happy Hour activation, recovery and countdown. <code>GameController</code>: Happy Hour prompt and Host step. <code>ConsoleView</code>: Happy Hour status and Host task. <br><span class="small">Source diff: 9 files, +392 / &minus;12 lines.</span></td></tr>
+  <tr><td>1 &rarr; 2</td><td><code>VIPCustomer</code>, <code>CriticCustomer</code></td><td><code>Scenario</code>: setup registers a VIP on turn 4 and a Critic on turn 10. <code>Game</code>: the serve message shows satisfaction before &rarr; after, so the Critic's reaction is visible (no rule change). <br><span class="small">Source diff: 4 files, +147 / &minus;3 lines.</span></td></tr>
+  <tr><td>2 &rarr; 3</td><td><code>Host</code>, <code>ComboMeal</code>, <code>PriceModifier</code>, <code>HappyHour</code></td><td><code>Scenario</code>: adds three combos to the menu. <code>PriceCalculator</code>: applies a list of modifiers. <code>Game</code>: Host action, Happy Hour activation, recovery and countdown. <code>GameController</code>: Happy Hour prompt and Host step. <code>ConsoleView</code>: Happy Hour status and Host task. <br><span class="small">Source diff: 9 files, +384 / &minus;10 lines.</span></td></tr>
 </table>
 <p>No earlier rules were rewritten. <code>Customer</code>, <code>Order</code>, <code>Waiter</code>,
 <code>Chef</code>, <code>Cashier</code> and <code>Restaurant</code> are unchanged since Stage 1, and Stage 1 and 2
@@ -307,11 +309,16 @@ Turns used: 18/18</pre>
   Section 3.3 example and the brief's price examples ($24.30 combo, $10.80 VIP Happy Hour burger).</li>
   <li><b>Helpful display</b>: each turn lists the useful task for every staff member, the turns left in Happy
   Hour, and the menu price whenever a discount applies.</li>
+  <li><b>Pixel-art window</b> (<code>run.bat --gui</code>): an animated graphical version of the same game, added
+  after <code>stage-3</code>. It is a second boundary: <code>PixelGame</code> calls the same public <code>Game</code>
+  actions as the console and <code>PixelRoom</code> only draws the current state, so no rule was changed or duplicated.
+  Its shift log also shows each waiting customer's satisfaction loss and whether each served order was discounted.</li>
+  <li><b>Demo jumps</b> in the pixel-art window: <code>DemoJump</code> starts a fresh game and replays the recorded
+  victory or defeat run to a chosen point (turn 4 VIP, turn 10 Critic, turn 13 Happy Hour decision, or either
+  ending), so a presenter can move forwards or back and always reach the same state.</li>
 </ul>
 
 <h2>9. Reflection</h2>
-<div class="note">The group should edit this section so that it reflects your own experience. Each member must
-be able to explain the part they present.</div>
 <p><b>What went well.</b> Planning the customer and menu hierarchies before Stage 1 paid off. Stage 2 needed two
 new classes and a two-line setup change, and combos in Stage 3 needed no change to orders or the kitchen.
 Writing the rule checks early, starting with the brief's Pasta example, caught timing mistakes. Examples were
@@ -322,7 +329,8 @@ after the new arrival. Making every invalid choice "free" required a strict vali
 every staff class.</p>
 <p><b>What we would do differently.</b> We would introduce Happy Hour through a general turn-event mechanism, so
 that Stage 3 changed <code>Game</code> and <code>GameController</code> less. We would also return event objects
-instead of text, so a GUI could reuse <code>Game</code> unchanged.</p>
+instead of text. The pixel-art window did reuse <code>Game</code> unchanged, but it can only print the
+English messages from <code>Game</code>; with event objects it could react to each event directly.</p>
 <p><b>What we learned.</b> Good object-oriented design shows up when requirements change. The stage tags let us
 measure this directly by how few existing lines each new stage had to touch.</p>
 

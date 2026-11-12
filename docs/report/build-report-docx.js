@@ -142,17 +142,17 @@ const cover = [
     { run: { size: 26, color: '3A5A8C' }, para: { spacing: { after: 480 } } }),
   table([3000, W - 3000], [
     ['Lab group', '[[e.g. FCS1]]'],
-    ['Assignment group', '[[e.g. Grp1]]'],
-    ['Repository', '[[https://github.com/OWNER/REPO]]'],
+    ['Assignment group', 'Grp1'],
+    ['Repository', 'https://github.com/JeremyChooCK/CT2003-Restaurant-Rush'],
     ['Tags', '`stage-1`, `stage-2`, `stage-3` (all runnable)'],
   ], { header: false }),
   new Paragraph({ text: 'Group members', heading: HeadingLevel.HEADING_2 }),
   table([3000, 2200, W - 5200], [
     ['Name', 'Matriculation no.', 'Main contribution'],
-    ['[[Member 1]]', '[[ ]]', '[[e.g. entity model, Stage 1]]'],
-    ['[[Member 2]]', '[[ ]]', '[[e.g. turn rules and controller]]'],
-    ['[[Member 3]]', '[[ ]]', '[[e.g. Stage 2 customers, tests]]'],
-    ['[[Member 4]]', '[[ ]]', '[[e.g. Stage 3, UML and report]]'],
+    ['Jeremy', '[[ ]]', '[[e.g. entity model, Stage 1]]'],
+    ['Yan Qing', '[[ ]]', '[[e.g. turn rules and controller]]'],
+    ['Chris', '[[ ]]', '[[e.g. Stage 2 customers, tests]]'],
+    ['Jun Siang', '[[ ]]', '[[e.g. Stage 3, UML and report]]'],
   ]),
   new Paragraph({ text: 'Contents', heading: HeadingLevel.HEADING_2 }),
   ...['Overview and how to run', 'Class diagrams (Stage 1, Stage 2, Stage 3 final)',
@@ -249,11 +249,11 @@ const choices = [
 
 const evolution = [
   H1('6. Evolution across the three stages (GitHub evidence)'),
-  P('Each stage is a separate tagged, runnable commit. Each stage\'s code builds, passes the rule checks that existed at that stage, and reproduces its own victory and defeat. We checked this by checking out each tag into a clean folder. The README lists the new and changed files for each transition with reasons and compare links.'),
+  P('Each stage is a separate tagged, runnable commit. Each stage\'s code builds, passes the rule checks that existed at that stage, and reproduces its own victory and defeat. We checked this by checking out each tag into a clean folder. The README lists the new and changed files for each transition with reasons and compare links. The optional pixel-art window was added after the `stage-3` tag, so the tags contain only the console game.'),
   table([1300, 2800, W - 4100], [
     ['Transition', 'New source files', 'Changed source files (reason)'],
-    ['1 → 2', '`VIPCustomer`, `CriticCustomer`', '`Scenario`: setup registers a VIP on turn 4 and a Critic on turn 10. `Game`: the serve message shows satisfaction before → after, so the Critic\'s reaction is visible (no rule change).\nSource diff: 4 files, +148 / -3 lines.'],
-    ['2 → 3', '`Host`, `ComboMeal`, `PriceModifier`, `HappyHour`', '`Scenario`: adds three combos to the menu. `PriceCalculator`: applies a list of modifiers. `Game`: Host action, Happy Hour activation, recovery and countdown. `GameController`: Happy Hour prompt and Host step. `ConsoleView`: Happy Hour status and Host task.\nSource diff: 9 files, +392 / -12 lines.'],
+    ['1 → 2', '`VIPCustomer`, `CriticCustomer`', '`Scenario`: setup registers a VIP on turn 4 and a Critic on turn 10. `Game`: the serve message shows satisfaction before → after, so the Critic\'s reaction is visible (no rule change).\nSource diff: 4 files, +147 / -3 lines.'],
+    ['2 → 3', '`Host`, `ComboMeal`, `PriceModifier`, `HappyHour`', '`Scenario`: adds three combos to the menu. `PriceCalculator`: applies a list of modifiers. `Game`: Host action, Happy Hour activation, recovery and countdown. `GameController`: Happy Hour prompt and Host step. `ConsoleView`: Happy Hour status and Host task.\nSource diff: 9 files, +384 / -10 lines.'],
   ]),
   P('No earlier rules were rewritten. `Customer`, `Order`, `Waiter`, `Chef`, `Cashier` and `Restaurant` are unchanged since Stage 1, and Stage 1 and 2 behaviour is still covered by the same rule checks at Stage 3.'),
 ];
@@ -339,14 +339,15 @@ const features = [
   bullet('**Configurable seed** (`--seed N`) to try different customer orders. The default 2003 is used for all evidence.'),
   bullet('**Offline rule checks** (40 checks, no test library), including a turn-by-turn replay of the brief\'s Section 3.3 example and the brief\'s price examples ($24.30 combo, $10.80 VIP Happy Hour burger).'),
   bullet('**Helpful display**: each turn lists the useful task for every staff member, the turns left in Happy Hour, and the menu price whenever a discount applies.'),
+  bullet('**Pixel-art window** (`run.bat --gui`): an animated graphical version of the same game, added after `stage-3`. It is a second boundary: `PixelGame` calls the same public `Game` actions as the console and `PixelRoom` only draws the current state, so no rule was changed or duplicated. Its shift log also shows each waiting customer\'s satisfaction loss and whether each served order was discounted.'),
+  bullet('**Demo jumps** in the pixel-art window: `DemoJump` starts a fresh game and replays the recorded victory or defeat run to a chosen point (turn 4 VIP, turn 10 Critic, turn 13 Happy Hour decision, or either ending), so a presenter can move forwards or back and always reach the same state.'),
 ];
 
 const reflection = [
   H1('9. Reflection'),
-  note('The group should edit this section so that it reflects your own experience. Each member must be able to explain the part they present.'),
   P('**What went well.** Planning the customer and menu hierarchies before Stage 1 paid off. Stage 2 needed two new classes and a two-line setup change, and combos in Stage 3 needed no change to orders or the kitchen. Writing the rule checks early, starting with the brief\'s Pasta example, caught timing mistakes. Examples were "served this turn" versus "next turn" and when a customer becomes ready to pay.'),
   P('**What was harder than expected.** The order of events within a turn (Host, then Waiter, then Chef, then payment, then satisfaction loss) has many edge cases. One example: whether Happy Hour recovery happens before or after the new arrival. Making every invalid choice "free" required a strict validate-first, act-second pattern in every staff class.'),
-  P('**What we would do differently.** We would introduce Happy Hour through a general turn-event mechanism, so that Stage 3 changed `Game` and `GameController` less. We would also return event objects instead of text, so a GUI could reuse `Game` unchanged.'),
+  P('**What we would do differently.** We would introduce Happy Hour through a general turn-event mechanism, so that Stage 3 changed `Game` and `GameController` less. We would also return event objects instead of text. The pixel-art window did reuse `Game` unchanged, but it can only print the English messages from `Game`; with event objects it could react to each event directly.'),
   P('**What we learned.** Good object-oriented design shows up when requirements change. The stage tags let us measure this directly by how few existing lines each new stage had to touch.'),
 ];
 
