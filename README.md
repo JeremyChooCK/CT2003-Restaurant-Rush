@@ -24,7 +24,7 @@ finished dishes. When you choose **Serve**, the Waiter carries the dish from the
 The sprites and restaurant tiles are in [assets/img](assets/img).
 
 The shift log also shows how much satisfaction each waiting customer lost that turn, and whether each
-served or paid order was at full price or discounted from its menu price.
+served order was at full price or discounted from its menu price.
 
 **Demo jumps.** For live demonstrations, choose a point in the **Demo jump** menu at the top of the window
 and click **Jump**. Every jump starts a fresh game and replays the recorded run with seed `2003` up to that

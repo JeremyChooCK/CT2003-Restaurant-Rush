@@ -3,7 +3,6 @@ package restaurantrush.boundary;
 import java.awt.*;
 import java.io.IOException;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import javax.swing.*;
@@ -41,7 +40,7 @@ public final class PixelGame extends JPanel {
     private final JLabel heading = label("", 20);
     private final JLabel hint = label("", 12);
     private final JPanel actions = new JPanel(new GridLayout(0, 1, 0, 5));
-    private final JTextArea log = new JTextArea(4, 40);
+    private final JTextArea log = new JTextArea(6, 40);
     private Game game;
     private Phase phase;
 
@@ -334,20 +333,13 @@ public final class PixelGame extends JPanel {
     }
 
     /**
-     * Runs the end of the turn (eating, payment, waiting penalties) and adds
-     * two kinds of note to the shift log: whether each new payment was at full
-     * or discounted price, and how much satisfaction each unserved customer
-     * lost, which makes the VIP's and Critic's different patience visible.
+     * Runs the end of the turn (eating, payment, waiting penalties) and notes
+     * in the shift log how much satisfaction each unserved customer lost,
+     * which makes the VIP's and Critic's different patience visible.
      */
     private void endTurn() {
-        List<Customer> paidBefore = game.getRestaurant().getCustomersWithStatus(CustomerStatus.PAID);
         game.processEatingAndPayment();
         showEvents();
-        for (Customer customer : game.getRestaurant().getCustomersWithStatus(CustomerStatus.PAID)) {
-            if (!paidBefore.contains(customer)) {
-                write("  -> " + priceNote(customer.getOrder()));
-            }
-        }
         Map<Customer, Integer> waiting = new LinkedHashMap<>();
         for (Customer customer : game.getRestaurant().getCustomers()) {
             if (customer.isAwaitingService()) {
