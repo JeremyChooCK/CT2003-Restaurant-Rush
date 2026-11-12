@@ -2,6 +2,7 @@ package restaurantrush.control;
 
 import java.util.Optional;
 
+import restaurantrush.entity.ComboMeal;
 import restaurantrush.entity.CriticCustomer;
 import restaurantrush.entity.Customer;
 import restaurantrush.entity.Dish;
@@ -41,7 +42,7 @@ public class Scenario {
 
     /**
      * Builds the menu: Salad $9.00 (1 unit), Burger $15.00 (1 unit),
-     * Pasta $18.00 (2 units).
+     * Pasta $18.00 (2 units) and, from Stage 3, the three two-dish combos.
      *
      * @return a new menu
      */
@@ -53,6 +54,10 @@ public class Scenario {
         menu.addItem(salad);
         menu.addItem(burger);
         menu.addItem(pasta);
+        // Stage 3: every pair of dishes is also offered as a combo at 90% of the combined price.
+        menu.addItem(new ComboMeal(salad, burger));
+        menu.addItem(new ComboMeal(salad, pasta));
+        menu.addItem(new ComboMeal(burger, pasta));
         return menu;
     }
 
