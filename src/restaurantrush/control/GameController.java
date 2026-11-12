@@ -43,14 +43,11 @@ public class GameController {
     }
 
     private void playTurn() {
-        offerHappyHour();
         game.startTurn();
         view.showTurnHeader(game);
         view.showEvents(game.drainEvents());
         view.showState(game);
 
-        view.showSection("Host (seats at most one customer)");
-        hostStep();
         view.showSection("Waiter (one task)");
         waiterStep();
         view.showSection("Chef (one preparation unit)");
@@ -61,40 +58,6 @@ public class GameController {
         game.processSatisfactionAndDepartures();
         view.showEvents(game.drainEvents());
         view.showEndOfTurn(game);
-    }
-
-    private void offerHappyHour() {
-        if (!game.getHappyHour().isAvailable()) {
-            return;
-        }
-        int turn = game.getCurrentTurn() + 1;
-        String turns = turn < game.getMaxTurns() ? "turns " + turn + "-" + (turn + 1) : "turn " + turn;
-        if (input.readYesNo("Start of turn " + turn + ": switch on Happy Hour now for " + turns
-                + "? It can be used once per game. (y/n) > ")) {
-            try {
-                game.activateHappyHour();
-            } catch (InvalidActionException e) {
-                view.showError(e.getMessage());
-            }
-        }
-    }
-
-    private void hostStep() {
-        while (true) {
-            int choice = input.readInt("Host: 1) Seat a customer  0) Wait > ", 0, 1);
-            if (choice == WAIT) {
-                view.showMessage("The Host waits this turn.");
-                return;
-            }
-            try {
-                game.hostSeat(input.readInt("  Customer number to seat (e.g. 2 for C2) > ", 0, MAX_ID),
-                        input.readInt("  Table number > ", 0, MAX_ID));
-                view.showEvents(game.drainEvents());
-                return;
-            } catch (InvalidActionException e) {
-                view.showError(e.getMessage());
-            }
-        }
     }
 
     private void waiterStep() {

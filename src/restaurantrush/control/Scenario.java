@@ -2,21 +2,15 @@ package restaurantrush.control;
 
 import java.util.Optional;
 
-import restaurantrush.entity.ComboMeal;
-import restaurantrush.entity.CriticCustomer;
 import restaurantrush.entity.Customer;
 import restaurantrush.entity.Dish;
 import restaurantrush.entity.Menu;
 import restaurantrush.entity.Money;
 import restaurantrush.entity.RegularCustomer;
-import restaurantrush.entity.VIPCustomer;
 
 /**
  * The base setting from the brief: 18 turns, 2 tables, the three-dish menu
- * and one arrival on turns 1, 4, 7, 10, 13 and 16.
- * <p>
- * Stage 2 arrivals: a VIP on turn 4 and a Critic on turn 10; the other four
- * are Regular customers, so there are still six arrivals.
+ * and one Regular customer arriving on turns 1, 4, 7, 10, 13 and 16.
  * <p>
  * All setup lives here, so later stages register new customer types or menu
  * items by changing this class only.
@@ -42,7 +36,7 @@ public class Scenario {
 
     /**
      * Builds the menu: Salad $9.00 (1 unit), Burger $15.00 (1 unit),
-     * Pasta $18.00 (2 units) and, from Stage 3, the three two-dish combos.
+     * Pasta $18.00 (2 units).
      *
      * @return a new menu
      */
@@ -54,10 +48,6 @@ public class Scenario {
         menu.addItem(salad);
         menu.addItem(burger);
         menu.addItem(pasta);
-        // Stage 3: every pair of dishes is also offered as a combo at 90% of the combined price.
-        menu.addItem(new ComboMeal(salad, burger));
-        menu.addItem(new ComboMeal(salad, pasta));
-        menu.addItem(new ComboMeal(burger, pasta));
         return menu;
     }
 
@@ -70,11 +60,7 @@ public class Scenario {
      */
     public Optional<Customer> createArrival(int turn, int customerId) {
         switch (turn) {
-            case 4:
-                return Optional.of(new VIPCustomer(customerId, turn, seed));
-            case 10:
-                return Optional.of(new CriticCustomer(customerId, turn, seed));
-            case 1: case 7: case 13: case 16:
+            case 1: case 4: case 7: case 10: case 13: case 16:
                 return Optional.of(new RegularCustomer(customerId, turn, seed));
             default:
                 return Optional.empty();

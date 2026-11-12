@@ -8,7 +8,6 @@ import java.util.OptionalDouble;
 import restaurantrush.control.Game;
 import restaurantrush.control.GameResult;
 import restaurantrush.control.GameStats;
-import restaurantrush.control.HappyHour;
 import restaurantrush.control.Objective;
 import restaurantrush.entity.Customer;
 import restaurantrush.entity.CustomerStatus;
@@ -48,11 +47,7 @@ public class ConsoleView {
         out.println("                 RESTAURANT RUSH - Manager's Shift");
         out.println(LINE);
         out.println("You manage a small restaurant for " + game.getMaxTurns() + " turns with "
-                + game.getRestaurant().getTables().size() + " tables, one Host, one Waiter, one Chef and one Cashier.");
-        out.println("Customers: Regular (loses 8 per waiting turn), VIP (loses 5, 10% off),");
-        out.println("           Critic (loses 12, orders the priciest item, +10 if served on time, else -10).");
-        out.println("Happy Hour (once per game, 2 turns): 20% off new orders, waiting customers recover "
-                + HappyHour.RECOVERY + " per turn.");
+                + game.getRestaurant().getTables().size() + " tables, one Waiter, one Chef and one Cashier.");
         out.println("Customers choose their own food. You decide what your staff do each turn.");
         out.println();
         out.println("Menu:");
@@ -90,7 +85,7 @@ public class ConsoleView {
         Restaurant restaurant = game.getRestaurant();
         out.println("Turn " + game.getCurrentTurn() + " | Revenue " + stats.getRevenue()
                 + " | Avg satisfaction (paid) " + formatAverage(stats.getAverageSatisfaction())
-                + " | Paid " + stats.getPaidCount() + " | " + describeHappyHour(game.getHappyHour()));
+                + " | Paid " + stats.getPaidCount());
         out.println();
         out.println("Waiting queue:");
         List<Customer> queue = restaurant.getWaitingQueue();
@@ -129,8 +124,6 @@ public class ConsoleView {
     protected void showAvailableTasks(Game game) {
         Restaurant restaurant = game.getRestaurant();
         out.println("Staff tasks available:");
-        out.println("  Host   : " + (restaurant.hasFreeTable() && !restaurant.getWaitingQueue().isEmpty()
-                ? "seat one queued customer (before the Waiter acts)" : "nothing to do (wait)"));
         out.println("  Waiter : " + String.join(" | ", waiterTasks(restaurant)));
         out.println("  Chef   : " + String.join(" | ", chefTasks(restaurant)));
         out.println("  Cashier: automatic, oldest READY_TO_PAY customer first");
@@ -171,20 +164,6 @@ public class ConsoleView {
             tasks.add("nothing to cook yet (orders taken this turn can still be cooked)");
         }
         return tasks;
-    }
-
-    /**
-     * Describes the Happy Hour state, including the turns remaining.
-     *
-     * @param happyHour the promotion
-     * @return a short description
-     */
-    protected String describeHappyHour(HappyHour happyHour) {
-        if (happyHour.isActive()) {
-            return "Happy Hour ON (" + happyHour.getTurnsRemaining() + " turn"
-                    + (happyHour.getTurnsRemaining() == 1 ? "" : "s") + " left incl. this one)";
-        }
-        return happyHour.isAvailable() ? "Happy Hour available" : "Happy Hour used";
     }
 
     /**

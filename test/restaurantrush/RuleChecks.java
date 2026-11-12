@@ -5,10 +5,7 @@ import java.util.function.IntFunction;
 
 import restaurantrush.control.Game;
 import restaurantrush.control.GameResult;
-import restaurantrush.control.HappyHour;
-import restaurantrush.control.PriceCalculator;
 import restaurantrush.control.Scenario;
-import restaurantrush.entity.CriticCustomer;
 import restaurantrush.entity.Customer;
 import restaurantrush.entity.CustomerStatus;
 import restaurantrush.entity.InvalidActionException;
@@ -17,7 +14,6 @@ import restaurantrush.entity.MenuItem;
 import restaurantrush.entity.Money;
 import restaurantrush.entity.OrderStatus;
 import restaurantrush.entity.RegularCustomer;
-import restaurantrush.entity.VIPCustomer;
 
 /**
  * Self-contained rule checks that need no test library, so they run offline.
@@ -44,11 +40,6 @@ public final class RuleChecks {
         dishFinishedThisTurnCannotBeServed();
         unhappyCustomerLeavesWithoutPaying();
         allWaitRunIsDefeat();
-        vipBehaviour();
-        criticBehaviour();
-        comboMeals();
-        happyHour();
-        hostSeatsInAdditionToWaiter();
         System.out.println(failures == 0 ? "ALL CHECKS PASSED" : failures + " CHECK(S) FAILED");
         if (failures > 0) {
             System.exit(1);
@@ -163,150 +154,6 @@ public final class RuleChecks {
         }
         check("All-wait base game ends in DEFEAT after 18 turns",
                 game.getResult() == GameResult.DEFEAT && game.getCurrentTurn() == 18);
-    }
-
-    /** VIPs lose 5 per waiting turn and pay 90%. */
-    private static void vipBehaviour() throws InvalidActionException {
-        VIPCustomer vip = new VIPCustomer(1, 1, Scenario.DEFAULT_SEED);
-        check("VIP pays 90%: $18.00 becomes $16.20", vip.applyDiscount(Money.ofDollars(18)).equals(Money.ofCents(1620)));
-        vip.loseSatisfaction();
-        check("VIP loses 5 per waiting turn", vip.getSatisfaction() == 95);
-        Game game = new Game(new FixedArrivalScenario(id -> new VIPCustomer(id, 1, Scenario.DEFAULT_SEED)));
-        game.startTurn();
-        game.waiterSeat(1, 1);
-        endTurn(game);
-        game.startTurn();
-        game.waiterTakeOrder(1);
-        Money full = game.getRestaurant().getOrders().get(0).getItem().getPrice();
-        check("VIP order is locked at 90% of the menu price",
-                game.getRestaurant().getOrders().get(0).getPrice().equals(full.percent(90)));
-    }
-
-    /** Critics lose 12, order the most expensive dish and react to the speed of service. */
-    private static void criticBehaviour() throws InvalidActionException {
-        Menu menu = new Scenario(Scenario.DEFAULT_SEED).createMenu();
-        CriticCustomer critic = new CriticCustomer(1, 1, Scenario.DEFAULT_SEED);
-        MenuItem choice = critic.chooseItem(menu);
-        check("Critic orders the most expensive item (" + choice.getName() + ")", choice == menu.mostExpensive());
-        critic.loseSatisfaction();
-        check("Critic loses 12 per waiting turn", critic.getSatisfaction() == 88);
-        int units = choice.getPrepUnits();
-
-        // Turn 1 seat, turn 2 order; the Chef cooks every turn from turn 2, so the dish
-        // is served on turn 2 + units, the earliest possible turn.
-        Game fast = criticGame();
-        fast.startTurn();
-        fast.waiterTakeOrder(1);
-        for (int i = 0; i < units; i++) {
-            if (i > 0) {
-                fast.startTurn();
-            }
-            fast.chefPrepare(1);
-            endTurn(fast);
-        }
-        fast.startTurn();
-        fast.waiterServe(1);
-        int expectedFast = 100 - 12 * (1 + units) + 10;
-        check("Critic served on time: +10 (satisfaction " + expectedFast + ")",
-                fast.getRestaurant().getCustomers().get(0).getSatisfaction() == expectedFast);
-
-        // Same, but the Chef waits on turn 2, so the dish is one turn late.
-        Game slow = criticGame();
-        slow.startTurn();
-        slow.waiterTakeOrder(1);
-        endTurn(slow);
-        for (int i = 0; i < units; i++) {
-            slow.startTurn();
-            slow.chefPrepare(1);
-            endTurn(slow);
-        }
-        slow.startTurn();
-        slow.waiterServe(1);
-        int expectedSlow = 100 - 12 * (2 + units) - 10;
-        check("Critic served one turn late: -10 (satisfaction " + expectedSlow + ")",
-                slow.getRestaurant().getCustomers().get(0).getSatisfaction() == expectedSlow);
-    }
-
-    /** Combo prices and preparation units follow the brief's formula. */
-    private static void comboMeals() {
-        Menu menu = new Scenario(Scenario.DEFAULT_SEED).createMenu();
-        MenuItem saladPasta = findItem(menu, "Salad + Pasta Combo");
-        check("Salad + Pasta Combo costs $24.30 and needs 3 units",
-                saladPasta.getPrice().equals(Money.ofCents(2430)) && saladPasta.getPrepUnits() == 3);
-        MenuItem saladBurger = findItem(menu, "Salad + Burger Combo");
-        check("Salad + Burger Combo costs $21.60 and needs 2 units",
-                saladBurger.getPrice().equals(Money.ofCents(2160)) && saladBurger.getPrepUnits() == 2);
-        check("Most expensive item is the Burger + Pasta Combo ($29.70)",
-                menu.mostExpensive().getName().equals("Burger + Pasta Combo")
-                        && menu.mostExpensive().getPrice().equals(Money.ofCents(2970)));
-    }
-
-    /** Happy Hour pricing, duration, single use and recovery. */
-    private static void happyHour() throws InvalidActionException {
-        Menu menu = new Scenario(Scenario.DEFAULT_SEED).createMenu();
-        HappyHour happyHour = new HappyHour();
-        PriceCalculator pricing = new PriceCalculator();
-        pricing.addModifier(happyHour);
-        VIPCustomer vip = new VIPCustomer(1, 1, Scenario.DEFAULT_SEED);
-        MenuItem burger = findItem(menu, "Burger");
-        check("Before Happy Hour a VIP Burger costs $13.50", pricing.quote(vip, burger).equals(Money.ofCents(1350)));
-        happyHour.activate();
-        check("VIP Burger during Happy Hour: $15 x 0.9 x 0.8 = $10.80",
-                pricing.quote(vip, burger).equals(Money.ofCents(1080)));
-        expectRejected("Happy Hour cannot be activated twice", happyHour::activate);
-
-        // In a game: an order taken before Happy Hour keeps its price, and waiting customers recover.
-        Game game = new Game(new FixedArrivalScenario(id -> new RegularCustomer(id, 1, Scenario.DEFAULT_SEED)));
-        game.startTurn();                         // turn 1
-        game.waiterSeat(1, 1);
-        endTurn(game);
-        game.startTurn();                         // turn 2: order at full price
-        game.waiterTakeOrder(1);
-        Money lockedPrice = game.getRestaurant().getOrders().get(0).getPrice();
-        endTurn(game);
-        Customer c1 = game.getRestaurant().getCustomers().get(0);
-        int before = c1.getSatisfaction();        // 84 after two turns
-        game.activateHappyHour();
-        game.startTurn();                         // turn 3: Happy Hour turn 1 of 2
-        check("Waiting customer recovers 15 at the start of a Happy Hour turn (" + before + " -> "
-                + c1.getSatisfaction() + ")", c1.getSatisfaction() == before + 15);
-        check("Happy Hour shows 2 turns left on its first turn", game.getHappyHour().getTurnsRemaining() == 2);
-        check("Order placed before Happy Hour keeps its locked price",
-                game.getRestaurant().getOrders().get(0).getPrice().equals(lockedPrice));
-        endTurn(game);
-        game.startTurn();                         // turn 4: Happy Hour turn 2 of 2
-        check("Happy Hour still active on its second turn", game.getHappyHour().isActive());
-        endTurn(game);
-        game.startTurn();                         // turn 5: over
-        check("Happy Hour ends after two turns", !game.getHappyHour().isActive());
-        expectRejected("Happy Hour cannot be used again in the same game", game::activateHappyHour);
-    }
-
-    /** The Host seats a customer in addition to the Waiter's task. */
-    private static void hostSeatsInAdditionToWaiter() throws InvalidActionException {
-        Game game = new Game(new FixedArrivalScenario(id -> new RegularCustomer(id, 1, Scenario.DEFAULT_SEED)));
-        game.startTurn();
-        game.hostSeat(1, 2);
-        game.waiterTakeOrder(2);
-        check("Host seats C1 and the Waiter takes the order in the same turn",
-                game.getRestaurant().getCustomers().get(0).getStatus() == CustomerStatus.ORDERED);
-    }
-
-    private static MenuItem findItem(Menu menu, String name) {
-        for (MenuItem item : menu.getItems()) {
-            if (item.getName().equals(name)) {
-                return item;
-            }
-        }
-        throw new IllegalStateException(name + " is not on the menu");
-    }
-
-    private static Game criticGame() throws InvalidActionException {
-        Game game = new Game(new FixedArrivalScenario(id -> new CriticCustomer(id, 1, Scenario.DEFAULT_SEED)));
-        game.startTurn();                         // turn 1: seat
-        game.waiterSeat(1, 1);
-        endTurn(game);
-        return game;
     }
 
     private static void endTurn(Game game) {

@@ -7,7 +7,6 @@ import java.util.Optional;
 import restaurantrush.entity.Cashier;
 import restaurantrush.entity.Chef;
 import restaurantrush.entity.Customer;
-import restaurantrush.entity.Host;
 import restaurantrush.entity.InvalidActionException;
 import restaurantrush.entity.MenuItem;
 import restaurantrush.entity.Money;
@@ -29,8 +28,6 @@ public class Game {
     private final Waiter waiter = new Waiter();
     private final Chef chef = new Chef();
     private final Cashier cashier = new Cashier();
-    private final Host host = new Host();
-    private final HappyHour happyHour = new HappyHour();
     private final GameStats stats = new GameStats();
     private final Objective objective = Objective.base();
     private final PriceCalculator pricing = new PriceCalculator();
@@ -46,7 +43,6 @@ public class Game {
     public Game(Scenario scenario) {
         this.scenario = scenario;
         this.restaurant = new Restaurant(scenario.createMenu(), scenario.getTableCount());
-        pricing.addModifier(happyHour);
     }
 
     /**
@@ -59,23 +55,8 @@ public class Game {
     }
 
     /**
-     * Switches on Happy Hour for the turn about to start and the next one.
-     * Call before {@link #startTurn()}.
-     *
-     * @throws InvalidActionException if Happy Hour has already been used
-     */
-    public void activateHappyHour() throws InvalidActionException {
-        if (!hasNextTurn()) {
-            throw new InvalidActionException("The game is over.");
-        }
-        happyHour.activate();
-        events.add("Happy Hour is ON for turns " + (currentTurn + 1) + " and " + (currentTurn + 2)
-                + ": 20% off new orders, waiting customers recover " + HappyHour.RECOVERY + " each turn.");
-    }
-
-    /**
-     * Starts the next turn: frees every staff member, applies the Happy Hour
-     * recovery if it is active, then processes the scheduled arrival (step 1).
+     * Starts the next turn: frees every staff member, then processes the
+     * scheduled arrival (step 1).
      */
     public void startTurn() {
         if (!hasNextTurn()) {
@@ -85,12 +66,6 @@ public class Game {
         waiter.resetForTurn();
         chef.resetForTurn();
         cashier.resetForTurn();
-        host.resetForTurn();
-        int recovered = happyHour.applyTurnStartRecovery(restaurant);
-        if (recovered > 0) {
-            events.add("Happy Hour: " + recovered + " waiting customer" + (recovered == 1 ? "" : "s")
-                    + " recovered " + HappyHour.RECOVERY + " satisfaction (maximum 100).");
-        }
         processArrivals();
     }
 
@@ -103,21 +78,6 @@ public class Game {
             events.add(customer.getLabel() + " arrived and joined the waiting queue (satisfaction "
                     + customer.getSatisfaction() + ").");
         }
-    }
-
-    /**
-     * Host task: seat a queued customer at a table. The Host acts before the
-     * Waiter and does not use up the Waiter's task.
-     *
-     * @param customerId  the queued customer's number
-     * @param tableNumber the table number
-     * @throws InvalidActionException if the choice breaks a rule
-     */
-    public void hostSeat(int customerId, int tableNumber) throws InvalidActionException {
-        Customer customer = restaurant.findQueuedCustomer(customerId);
-        Table table = restaurant.findTable(tableNumber);
-        host.seat(restaurant, customer, table);
-        events.add("Host seated " + customer.getLabel() + " at Table " + table.getNumber() + ".");
     }
 
     /**
@@ -151,11 +111,9 @@ public class Game {
         MenuItem item = customer.chooseItem(restaurant.getMenu());
         Money price = pricing.quote(customer, item);
         Order order = waiter.takeOrder(restaurant, customer, item, price, currentTurn);
-        String priceNote = price.equals(item.getPrice()) ? "" : " (menu price " + item.getPrice()
-                + (happyHour.isActive() ? ", Happy Hour applied" : "") + ")";
         events.add("Waiter took order #" + order.getId() + ": " + customer.getLabel() + " ordered "
                 + item.getName() + " (" + item.getPrepUnits() + " prep unit"
-                + (item.getPrepUnits() == 1 ? "" : "s") + ") for " + price + priceNote + ".");
+                + (item.getPrepUnits() == 1 ? "" : "s") + ") for " + price + ".");
     }
 
     /**
@@ -167,13 +125,10 @@ public class Game {
     public void waiterServe(int orderId) throws InvalidActionException {
         Order order = restaurant.findOrder(orderId);
         Customer customer = order.getCustomer();
-        int before = customer.getSatisfaction();
         waiter.serve(order, currentTurn);
         stats.recordServed();
-        String change = before == customer.getSatisfaction() ? String.valueOf(before)
-                : before + " -> " + customer.getSatisfaction() + " (reaction to service)";
         events.add("Waiter served order " + order + ". " + customer.getLabel()
-                + " is now eating (satisfaction " + change + ").");
+                + " is now eating (satisfaction " + customer.getSatisfaction() + ").");
     }
 
     /**
@@ -227,7 +182,6 @@ public class Game {
                 events.add(customer.getLabel() + " lost all patience and left without paying.");
             }
         }
-        happyHour.endTurn();
     }
 
     /**
@@ -295,15 +249,6 @@ public class Game {
      */
     public Objective getObjective() {
         return objective;
-    }
-
-    /**
-     * Returns the Happy Hour promotion, for display.
-     *
-     * @return the Happy Hour state
-     */
-    public HappyHour getHappyHour() {
-        return happyHour;
     }
 
     /**
