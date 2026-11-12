@@ -2,14 +2,26 @@ package restaurantrush.boundary;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import restaurantrush.control.Game;
 import restaurantrush.control.Scenario;
 import restaurantrush.entity.*;
 
-/** Graphical controls for the same shift and staff actions as the terminal. */
+/**
+ * The pixel-art window: graphical controls for the same shift and staff
+ * actions as the terminal.
+ * <p>
+ * Like the console boundary, this class holds no game rules. Each button calls
+ * a public {@link Game} action, any {@link InvalidActionException} is shown in
+ * the shift log so the manager can choose again, and {@link PixelRoom} draws
+ * the resulting state. The demo jump bar replaces the game with one built by
+ * {@link DemoJump}, so a presenter can move to any recorded point and back.
+ */
 public final class PixelGame extends JPanel {
     private static final Color INK = new Color(0x302638);
     private static final Color PANEL = new Color(0x493647);
@@ -46,6 +58,7 @@ public final class PixelGame extends JPanel {
         title.setForeground(GOLD);
         header.add(title, BorderLayout.WEST);
         header.add(stats, BorderLayout.EAST);
+        header.add(jumpBar(), BorderLayout.SOUTH);
         add(header, BorderLayout.NORTH);
 
         JPanel sidebar = new JPanel(new BorderLayout(0, 9));
@@ -100,6 +113,12 @@ public final class PixelGame extends JPanel {
         reset();
     }
 
+    /**
+     * Opens the pixel-art window on the Swing event thread. If the sprites in
+     * {@code assets/img} cannot be loaded, an error dialog explains why.
+     *
+     * @param seed the seed that decides what customers order
+     */
     public static void open(long seed) {
         SwingUtilities.invokeLater(() -> {
             try {
@@ -117,12 +136,67 @@ public final class PixelGame extends JPanel {
         });
     }
 
+    /** Starts a new game with the window's seed. */
     private void reset() {
         game = new Game(new Scenario(seed));
         log.setText("");
+        writeIntro();
+        phase = Phase.START;
+        refresh();
+    }
+
+    private void writeIntro() {
         write("Win after 18 turns: 4 paid customers, $45 revenue and 60 average satisfaction.");
         write("Choose staff tasks on the right. Customers choose their own food.");
-        phase = Phase.START;
+    }
+
+    /** Builds the "Demo jump" row: a menu of {@link DemoJump}s and a Jump button. */
+    private JPanel jumpBar() {
+        JPanel bar = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 0));
+        bar.setOpaque(false);
+        bar.setBorder(new EmptyBorder(6, 0, 0, 0));
+        bar.add(label("DEMO JUMP", 11));
+        JComboBox<DemoJump> choice = new JComboBox<>(DemoJump.values());
+        choice.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+        bar.add(choice);
+        JButton jump = new JButton("Jump");
+        jump.setFont(new Font(Font.MONOSPACED, Font.BOLD, 12));
+        jump.addActionListener(event -> jumpTo((DemoJump) choice.getSelectedItem()));
+        bar.add(jump);
+        return bar;
+    }
+
+    /**
+     * Replaces the current game with a fresh one replayed to the chosen point.
+     * Works from any phase, so a presenter can go forwards or back at will.
+     */
+    private void jumpTo(DemoJump jump) {
+        Game replayed;
+        try {
+            replayed = jump.replay();
+        } catch (InvalidActionException error) {
+            write("[Demo] Could not jump: " + error.getMessage());
+            return;
+        }
+        game = replayed;
+        log.setText("");
+        writeIntro();
+        if (jump.getTurnsPlayed() == 0) {
+            write("[Demo] New game with the recorded seed " + Scenario.DEFAULT_SEED + ".");
+        } else {
+            write("[Demo] Replayed turns 1-" + jump.getTurnsPlayed() + " of the recorded "
+                    + (jump == DemoJump.DEFEAT ? "defeat" : "victory") + " run (seed "
+                    + Scenario.DEFAULT_SEED + ").");
+        }
+        if (game.hasNextTurn()) {
+            phase = Phase.START;
+            write("[Demo] Your move: start turn " + (game.getCurrentTurn() + 1) + ".");
+        } else {
+            phase = Phase.FINISHED;
+            var scores = game.getStats();
+            write("[Demo] Final result: " + game.getResult().name() + ". Paid " + scores.getPaidCount()
+                    + ", revenue " + scores.getRevenue() + ", left unhappy " + scores.getUnhappyDepartures() + ".");
+        }
         refresh();
     }
 
@@ -204,6 +278,7 @@ public final class PixelGame extends JPanel {
             addAction("Serve #" + order.getId() + " (" + order.getCustomer().getLabel() + ")",
                     Phase.CHEF, () -> {
                         game.waiterServe(order.getId());
+                        write("Bill for " + order.getCustomer().getLabel() + ": " + priceNote(order));
                         room.deliverOrder(order, order.getCustomer().getTable().getNumber(), () -> {
                             if (phase == Phase.SUMMARY && !room.hasPendingDelivery()) refresh();
                         });
@@ -249,16 +324,51 @@ public final class PixelGame extends JPanel {
                 showEvents();
                 phase = next;
                 if (next == Phase.SUMMARY) {
-                    game.processEatingAndPayment();
-                    game.processSatisfactionAndDepartures();
-                    showEvents();
-                    if (!game.hasNextTurn()) phase = Phase.FINISHED;
+                    endTurn();
                 }
                 refresh();
             } catch (InvalidActionException error) {
                 write(error.getMessage());
             }
         });
+    }
+
+    /**
+     * Runs the end of the turn (eating, payment, waiting penalties) and adds
+     * two kinds of note to the shift log: whether each new payment was at full
+     * or discounted price, and how much satisfaction each unserved customer
+     * lost, which makes the VIP's and Critic's different patience visible.
+     */
+    private void endTurn() {
+        List<Customer> paidBefore = game.getRestaurant().getCustomersWithStatus(CustomerStatus.PAID);
+        game.processEatingAndPayment();
+        showEvents();
+        for (Customer customer : game.getRestaurant().getCustomersWithStatus(CustomerStatus.PAID)) {
+            if (!paidBefore.contains(customer)) {
+                write("  -> " + priceNote(customer.getOrder()));
+            }
+        }
+        Map<Customer, Integer> waiting = new LinkedHashMap<>();
+        for (Customer customer : game.getRestaurant().getCustomers()) {
+            if (customer.isAwaitingService()) {
+                waiting.put(customer, customer.getSatisfaction());
+            }
+        }
+        game.processSatisfactionAndDepartures();
+        showEvents();
+        waiting.forEach((customer, before) -> write("Waiting: " + customer.getLabel() + " satisfaction "
+                + before + " -> " + customer.getSatisfaction() + " (-" + (before - customer.getSatisfaction()) + ")"));
+        if (!game.hasNextTurn()) {
+            phase = Phase.FINISHED;
+        }
+    }
+
+    /** Describes an order's locked price as full price or discounted from the menu price. */
+    private static String priceNote(Order order) {
+        if (order.getPrice().equals(order.getItem().getPrice())) {
+            return "FULL PRICE " + order.getPrice();
+        }
+        return "DISCOUNTED: paid " + order.getPrice() + " instead of menu price " + order.getItem().getPrice();
     }
 
     private void showPhase(String title, String description) {
