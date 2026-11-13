@@ -27,9 +27,9 @@ public class Waiter extends Staff {
     }
 
     /**
-     * Checks that the Waiter can take this customer's order now, without
-     * taking it. This lets the game check validity before the customer
-     * chooses food.
+     * Checks that the Waiter is able to take this customer's order, without
+     * actually taking it. This way the game can check the move before the
+     * customer picks their food.
      *
      * @param customer the customer at the table
      * @throws InvalidActionException if the Waiter is busy or the customer

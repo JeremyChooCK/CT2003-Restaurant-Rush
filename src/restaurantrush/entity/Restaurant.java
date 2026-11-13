@@ -10,9 +10,9 @@ import java.util.List;
  * The restaurant floor: the menu, the tables, the waiting queue, every
  * customer who has arrived and every order taken.
  * <p>
- * It owns its tables and keeps the queue, tables, customers and orders
- * consistent with each other. Staff go through its methods to seat
- * customers, open orders and take payments.
+ * It creates its own tables and makes sure the queue, tables, customers and
+ * orders stay in sync. Staff use its methods to seat customers, create orders
+ * and take payments.
  */
 public class Restaurant {
 

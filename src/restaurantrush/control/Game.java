@@ -17,10 +17,9 @@ import restaurantrush.entity.Table;
 import restaurantrush.entity.Waiter;
 
 /**
- * Applies the game rules turn by turn. It contains no input or output code:
- * the controller passes in the manager's choices as numbers, and this class
- * checks them, updates the restaurant and records what happened as event
- * messages.
+ * Handles the game rules for each turn. There is no input/output code here.
+ * The controller passes in the manager's choices as numbers, and this class
+ * checks them, updates the restaurant and saves messages about what happened.
  */
 public class Game {
 

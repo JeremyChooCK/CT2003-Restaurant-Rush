@@ -18,8 +18,8 @@ import restaurantrush.entity.VIPCustomer;
  * Stage 2 arrivals: a VIP on turn 4 and a Critic on turn 10; the other four
  * are Regular customers, so there are still six arrivals.
  * <p>
- * All setup lives here, so later stages register new customer types or menu
- * items by changing this class only.
+ * All the setup is in this class, so adding new customer types or menu items
+ * in later stages only needs changes here.
  */
 public class Scenario {
 

@@ -14,7 +14,7 @@ public class InvalidActionException extends Exception {
     /**
      * Creates the exception.
      *
-     * @param message a player-friendly explanation of the problem
+     * @param message why the action is not allowed (shown to the player)
      */
     public InvalidActionException(String message) {
         super(message);

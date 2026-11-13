@@ -3,9 +3,9 @@ package restaurantrush.entity;
 /**
  * An immutable, non-negative amount of money stored as whole cents.
  * <p>
- * Storing integer cents avoids floating-point rounding errors. All
- * arithmetic returns a new {@code Money} object, so a price can be shared
- * safely between orders without being changed by accident.
+ * We store cents as an int to avoid rounding errors with doubles. Every
+ * calculation returns a new {@code Money} object, so a price shared between
+ * orders cannot be changed by mistake.
  */
 public final class Money implements Comparable<Money> {
 

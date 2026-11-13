@@ -4,8 +4,8 @@ package restaurantrush.entity;
  * Something a customer can order. Every menu item has a name, a price and
  * a number of preparation units the Chef must complete.
  * <p>
- * Orders and the Chef only depend on this abstraction, so new kinds of menu
- * item can be added without changing them.
+ * Orders and the Chef only use this abstract class, so we can add new types
+ * of menu item without changing them.
  */
 public abstract class MenuItem {
 

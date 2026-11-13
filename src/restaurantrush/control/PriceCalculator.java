@@ -8,12 +8,12 @@ import restaurantrush.entity.MenuItem;
 import restaurantrush.entity.Money;
 
 /**
- * Works out the price a customer pays for a menu item at the moment the
- * order is taken. Keeping pricing in one place means the Waiter and Order
- * never need to know about discounts.
+ * Calculates the price a customer pays for an item when the order is taken.
+ * All the pricing is done here so the Waiter and Order classes don't need to
+ * know about discounts.
  * <p>
- * The customer's own discount (for example VIP) is applied first, then each
- * registered {@link PriceModifier} (for example Happy Hour) in order.
+ * The customer's own discount (e.g. VIP) is applied first, then each
+ * {@link PriceModifier} that was added (e.g. Happy Hour).
  */
 public class PriceCalculator {
 
