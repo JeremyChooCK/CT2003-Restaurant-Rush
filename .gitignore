@@ -2,3 +2,4 @@ out/
 sources.txt
 *.class
 out-test/
+.DS_Store
