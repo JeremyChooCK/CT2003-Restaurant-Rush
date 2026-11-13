@@ -8,12 +8,12 @@ import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Reads the manager's choices from the keyboard or from a redirected script
- * file. It only checks the format of the input (a whole number in range);
- * whether the choice is allowed is decided by the game rules.
+ * Reads the manager's choices from the keyboard, or from a script file
+ * redirected into the program. This class only checks that the input is a
+ * number in the right range. The game rules decide if the move is allowed.
  * <p>
- * If the input runs out, for example at the end of a script, it chooses
- * "0" (Wait) or "no", so a scripted run always finishes cleanly.
+ * If the input runs out (e.g. at the end of a script file) it answers "0"
+ * (Wait) or "no" so the run can still finish.
  */
 public class ConsoleInput {
 

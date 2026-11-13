@@ -19,8 +19,8 @@ import restaurantrush.entity.Restaurant;
 import restaurantrush.entity.Table;
 
 /**
- * Displays the game state in the console. It only reads the game objects
- * and formats them; it never changes them or applies rules.
+ * Prints the game state to the console. It only reads the game objects to
+ * display them and does not change anything.
  */
 public class ConsoleView {
 

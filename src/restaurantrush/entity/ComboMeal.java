@@ -7,9 +7,8 @@ package restaurantrush.entity;
  * 90% of their combined price, rounded to the nearest cent. For example,
  * Salad + Pasta costs ($9.00 + $18.00) x 0.9 = $24.30 and needs 3 units.
  * <p>
- * A combo is built from (composed of) other menu items, and because it is
- * itself a {@link MenuItem}, orders, the Chef and pricing handle it like
- * any single dish.
+ * A combo is made up of other menu items. It is also a {@link MenuItem}
+ * itself, so orders, the Chef and pricing treat it like a normal dish.
  */
 public class ComboMeal extends MenuItem {
 

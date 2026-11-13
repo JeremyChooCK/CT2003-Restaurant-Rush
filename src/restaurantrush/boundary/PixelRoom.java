@@ -25,10 +25,10 @@ import restaurantrush.entity.Table;
 /**
  * Paints the dining room from the current game state.
  * <p>
- * The room only reads the {@link Game}: customers walk to the queue or their
- * table according to their status, and staff sprites walk short routes to
- * animate the actions {@link PixelGame} has already applied. It never changes
- * the game, so animations cannot affect the rules.
+ * The room only reads the {@link Game}. Customers walk to the queue or to
+ * their table depending on their status, and the staff sprites walk around to
+ * show the actions that {@link PixelGame} has already done. Nothing here
+ * changes the game.
  */
 final class PixelRoom extends JPanel {
     private static final int WIDTH = 300;

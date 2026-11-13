@@ -6,12 +6,12 @@ import java.util.Random;
  * A restaurant customer. Every customer follows the same visit flow:
  * WAITING, SEATED, ORDERED, EATING, READY_TO_PAY and finally PAID or LEFT.
  * <p>
- * Subclasses decide how quickly the customer loses patience, whether they get
- * a discount, how they choose food and how they react to being served. The
- * game rules call these methods without checking the customer's type.
+ * Each subclass sets how fast the customer loses patience, if they get a
+ * discount, how they pick their food and what happens when they are served.
+ * The game calls these methods without needing to know the customer type.
  * <p>
- * State changes are package-private, so only the restaurant and its staff
- * can move a customer through the visit.
+ * The methods that change the status are package-private, so only the
+ * restaurant and staff classes can use them.
  */
 public abstract class Customer {
 
@@ -33,8 +33,8 @@ public abstract class Customer {
      *
      * @param id          unique customer number, shown as C1, C2 and so on
      * @param arrivalTurn the turn the customer arrived
-     * @param seed        the game seed; each customer gets its own
-     *                    reproducible random sequence derived from it
+     * @param seed        the game seed, used to give each customer their own
+     *                    random sequence that is the same every run
      */
     protected Customer(int id, int arrivalTurn, long seed) {
         this.id = id;
@@ -69,9 +69,9 @@ public abstract class Customer {
     }
 
     /**
-     * Chooses what to order. The default picks uniformly at random from the
-     * whole menu using this customer's seeded random sequence, so the same
-     * seed always produces the same choices.
+     * Chooses what to order. By default it picks a random item from the menu
+     * using the customer's seeded random, so the same seed gives the same
+     * choices every time.
      *
      * @param menu the restaurant menu
      * @return the chosen item

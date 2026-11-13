@@ -1,19 +1,17 @@
 package restaurantrush.entity;
 
 /**
- * A food critic: impatient (loses 12 satisfaction per waiting turn) and pays
+ * A food critic. Loses 12 satisfaction per waiting turn (impatient) and pays
  * full price.
  * <p>
  * Special behaviour:
  * <ul>
- *   <li><b>Order preference:</b> always orders the most expensive item on the
- *       menu, to test the kitchen.</li>
- *   <li><b>Reaction to service:</b> when served, the critic judges the
- *       kitchen's speed. If the dish arrives on the earliest possible turn
- *       (order turn + preparation units, meaning the Chef started at once and
- *       never paused), the critic is impressed and gains
- *       {@value #PERFECT_SERVICE_BONUS} satisfaction. Otherwise the critic
- *       writes a harsh note and loses {@value #SLOW_SERVICE_PENALTY}.</li>
+ *   <li>Always orders the most expensive item on the menu.</li>
+ *   <li>When served, checks how fast the food came. If it came on the
+ *       earliest possible turn (order turn + preparation units, i.e. the Chef
+ *       started straight away and never stopped), the critic gains
+ *       {@value #PERFECT_SERVICE_BONUS} satisfaction. If not, the critic
+ *       loses {@value #SLOW_SERVICE_PENALTY}.</li>
  * </ul>
  */
 public class CriticCustomer extends Customer {

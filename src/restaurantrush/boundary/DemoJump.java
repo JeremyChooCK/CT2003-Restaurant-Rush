@@ -5,16 +5,17 @@ import restaurantrush.control.Scenario;
 import restaurantrush.entity.InvalidActionException;
 
 /**
- * Ready-made starting points for live demonstrations in the pixel-art window.
+ * Saved points in the game that we can jump to during the demo in the
+ * pixel-art window.
  * <p>
- * Each jump builds a brand-new {@link Game} with the default seed and replays
- * the manager's moves from the recorded runs ({@code runs/stage3-victory.txt}
- * or {@code runs/stage3-defeat.txt}) up to a chosen turn. Because the game is
- * seeded, a jump always lands on exactly the same state, and jumping back to
- * an earlier point simply starts another fresh game.
+ * A jump creates a new {@link Game} with the default seed and replays the
+ * moves from our recorded runs ({@code runs/stage3-victory.txt} or
+ * {@code runs/stage3-defeat.txt}) up to the chosen turn. Since the game uses
+ * a fixed seed, the same jump always gives the same state. Jumping back just
+ * starts a new game again.
  * <p>
- * Only the public {@link Game} actions are used, so every rule is applied
- * exactly as in normal play; this class contains no game rules of its own.
+ * The replay only calls the normal public {@link Game} methods, so the rules
+ * are the same as in a normal game.
  */
 public enum DemoJump {
 

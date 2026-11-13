@@ -20,9 +20,10 @@ import restaurantrush.entity.RegularCustomer;
 import restaurantrush.entity.VIPCustomer;
 
 /**
- * Self-contained rule checks that need no test library, so they run offline.
- * Run with {@code ./test.sh} or {@code test.bat}. Each check prints PASS or
- * FAIL and the program exits with code 1 if any check fails.
+ * Our tests for the game rules. They don't use JUnit or any other library,
+ * so they can run offline. Run with {@code ./test.sh} or {@code test.bat}.
+ * Each check prints PASS or FAIL, and the program exits with code 1 if any
+ * check fails.
  */
 public final class RuleChecks {
 

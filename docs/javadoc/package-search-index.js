@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"restaurantrush"},{"l":"restaurantrush.boundary"},{"l":"restaurantrush.control"},{"l":"restaurantrush.entity"}];updateSearchResults();

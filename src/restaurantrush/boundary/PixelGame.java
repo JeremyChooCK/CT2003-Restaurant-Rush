@@ -12,14 +12,14 @@ import restaurantrush.control.Scenario;
 import restaurantrush.entity.*;
 
 /**
- * The pixel-art window: graphical controls for the same shift and staff
- * actions as the terminal.
+ * The pixel-art window. It has buttons for the same actions as the
+ * terminal version.
  * <p>
- * Like the console boundary, this class holds no game rules. Each button calls
- * a public {@link Game} action, any {@link InvalidActionException} is shown in
- * the shift log so the manager can choose again, and {@link PixelRoom} draws
- * the resulting state. The demo jump bar replaces the game with one built by
- * {@link DemoJump}, so a presenter can move to any recorded point and back.
+ * There are no game rules in this class. Each button calls a public
+ * {@link Game} method. If the move is not allowed, the
+ * {@link InvalidActionException} message is shown in the shift log and the
+ * manager can pick again. {@link PixelRoom} then draws the new state.
+ * The demo jump bar swaps in a game created by {@link DemoJump}.
  */
 public final class PixelGame extends JPanel {
     private static final Color INK = new Color(0x302638);
@@ -166,8 +166,8 @@ public final class PixelGame extends JPanel {
     }
 
     /**
-     * Replaces the current game with a fresh one replayed to the chosen point.
-     * Works from any phase, so a presenter can go forwards or back at will.
+     * Replaces the current game with a new one replayed up to the chosen
+     * point. This works at any time, so we can go forwards or backwards.
      */
     private void jumpTo(DemoJump jump) {
         Game replayed;
@@ -333,9 +333,9 @@ public final class PixelGame extends JPanel {
     }
 
     /**
-     * Runs the end of the turn (eating, payment, waiting penalties) and notes
-     * in the shift log how much satisfaction each unserved customer lost,
-     * which makes the VIP's and Critic's different patience visible.
+     * Runs the end of the turn (eating, payment, waiting penalties) and writes
+     * in the shift log how much satisfaction each unserved customer lost, so
+     * you can see that the VIP and Critic lose it at different rates.
      */
     private void endTurn() {
         game.processEatingAndPayment();
