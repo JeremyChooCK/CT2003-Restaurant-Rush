@@ -357,12 +357,7 @@ public final class RuleChecks {
             super(id -> new RegularCustomer(id, 1, DEFAULT_SEED) {
                 @Override
                 public MenuItem chooseItem(Menu menu) {
-                    for (MenuItem item : menu.getItems()) {
-                        if (item.getName().equals(dishName)) {
-                            return item;
-                        }
-                    }
-                    throw new IllegalStateException(dishName + " is not on the menu");
+                    return findItem(menu, dishName);
                 }
             });
         }
