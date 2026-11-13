@@ -42,15 +42,6 @@ public final class Money implements Comparable<Money> {
     }
 
     /**
-     * Returns the amount in cents.
-     *
-     * @return the number of cents
-     */
-    public long getCents() {
-        return cents;
-    }
-
-    /**
      * Adds another amount to this one.
      *
      * @param other the amount to add

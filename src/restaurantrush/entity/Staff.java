@@ -37,15 +37,6 @@ public abstract class Staff {
     }
 
     /**
-     * Returns the job title.
-     *
-     * @return the role
-     */
-    public String getRole() {
-        return role;
-    }
-
-    /**
      * Checks that the staff member still has a task left this turn.
      *
      * @throws InvalidActionException if the task has already been used

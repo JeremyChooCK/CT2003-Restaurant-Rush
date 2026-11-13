@@ -47,15 +47,6 @@ public enum DemoJump {
     }
 
     /**
-     * Returns the text shown in the jump menu.
-     *
-     * @return the label, such as "Turn 4: VIP arrives"
-     */
-    public String getLabel() {
-        return label;
-    }
-
-    /**
      * Returns how many turns the jump plays before handing control back.
      *
      * @return the number of completed turns
